@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="19529" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="19514"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WarmUpKitMobile_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="okay done" id="oXK-VY-2pw"/>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Start measuring" id="dYa-st-nVP">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="startOrStopWorkout" destination="AgC-eL-Hgc" id="AlO-BW-EPZ"/>
+                            </connections>
+                        </button>
+                        <group width="134" alignment="center" spacing="5" id="F5i-qN-kuy">
+                            <items>
+                                <imageView alignment="left" verticalAlignment="center" image="heart" id="y1F-er-mbS"/>
+                                <label alignment="left" verticalAlignment="center" text="0" textAlignment="left" id="CgW-qO-bgb">
+                                    <fontDescription key="font" type="system" pointSize="32"/>
+                                </label>
+                                <label alignment="left" verticalAlignment="center" text="BPM" id="YN5-pK-WmU">
+                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" type="boldSystem" pointSize="26"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="avg-pA-SlP">
+                            <items>
+                                <label alignment="left" text="Label" id="tLh-zU-UA6">
+                                    <fontDescription key="font" type="system" pointSize="11"/>
+                                </label>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="heartRateLabel" destination="CgW-qO-bgb" id="W3L-kb-3Z8"/>
+                        <outlet property="timeLabel" destination="tLh-zU-UA6" id="cFh-lP-WfH"/>
+                        <outlet property="workout" destination="dYa-st-nVP" id="Kyv-vC-pVg"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="heart" width="32" height="32"/>
+    </resources>
+</document>
