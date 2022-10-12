@@ -38,7 +38,7 @@ class HealthKitManager: NSObject {
         let typesToRead = Set([HKObjectType.workoutType(),heartRateType, footstep,distance])
         
         healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
-            print("Was healthkit authorization successful? \(success) Errors: \(error)")
+            print("Was healthkit authorization successful? \(success) Errors: \(String(describing: error))")
             completion(success, error)
         }
     }

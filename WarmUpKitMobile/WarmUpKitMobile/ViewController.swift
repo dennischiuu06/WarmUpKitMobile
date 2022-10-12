@@ -19,22 +19,22 @@ class TabBarPageViewController: UITabBarController {
         tabBar.tintColor = .label
         tabBar.barTintColor = .systemGray
         tabBar.backgroundColor = ColorCode.lightSlate()
-        self.selectedIndex = 1
+        self.selectedIndex = 0
         setupMiddleButton()
-        setupUI()
+//        setupUI()
     }
     
-    func setupUI() {
-        if let tabBarItems = tabBar.items {
-            for tabBarItem in tabBarItems {
-                print(tabBarItem.title)
-            }
-        }
-    }
+//    func setupUI() {
+//        if let tabBarItems = tabBar.items {
+//            for tabBarItem in tabBarItems {
+////                print(tabBarItem.title)
+//            }
+//        }
+//    }
     func setupMiddleButton() {
         let custoButton = UIButton(frame: CGRect(x: (self.view.bounds.width / 2) - 25, y: -20, width: 60, height: 60 ))
         
-        custoButton.setBackgroundImage(UIImage(named: "Icon-40"), for: .normal)
+        custoButton.setBackgroundImage(UIImage(named: "home_icon"), for: .normal)
         custoButton.layer.shadowColor = UIColor.black.cgColor
         custoButton.layer.shadowOpacity = 0.1
         custoButton.layer.shadowOffset = CGSize(width: 4, height: 4)
@@ -46,8 +46,7 @@ class TabBarPageViewController: UITabBarController {
     }
     
     @objc func customButtonAction(sender: UIButton) {
-        print("home")
-        self.selectedIndex = 1
+        self.selectedIndex = 0
     }
     
 }

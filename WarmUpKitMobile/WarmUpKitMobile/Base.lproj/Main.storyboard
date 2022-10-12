@@ -11,7 +11,6 @@
         <!--Home Page View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="HomePageViewController" customModule="WarmUpKitMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -20,17 +19,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0l-so-BHk">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20S-wq-mKA">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="OHY-2y-p0Q"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="diP-tp-Wxf">
+                                        <rect key="frame" x="16" y="16" width="382" height="662"/>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4X-IJ-cfS">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="675"/>
+                                        <rect key="frame" x="0.0" y="694" width="414" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
@@ -40,13 +33,13 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="20S-wq-mKA" secondAttribute="trailing" id="0rg-Ph-txb"/>
-                                    <constraint firstItem="20S-wq-mKA" firstAttribute="top" secondItem="d0l-so-BHk" secondAttribute="top" id="4f0-l9-flw"/>
+                                    <constraint firstAttribute="trailing" secondItem="diP-tp-Wxf" secondAttribute="trailing" constant="16" id="878-Ta-Tgn"/>
+                                    <constraint firstItem="j4X-IJ-cfS" firstAttribute="top" secondItem="diP-tp-Wxf" secondAttribute="bottom" constant="16" id="8kF-IB-5QO"/>
+                                    <constraint firstItem="diP-tp-Wxf" firstAttribute="leading" secondItem="d0l-so-BHk" secondAttribute="leading" constant="16" id="99n-2o-loh"/>
                                     <constraint firstItem="j4X-IJ-cfS" firstAttribute="leading" secondItem="d0l-so-BHk" secondAttribute="leading" id="9gY-X8-DaJ"/>
                                     <constraint firstAttribute="bottom" secondItem="j4X-IJ-cfS" secondAttribute="bottom" id="GZe-Kb-Cad"/>
-                                    <constraint firstItem="20S-wq-mKA" firstAttribute="leading" secondItem="d0l-so-BHk" secondAttribute="leading" id="Mua-AB-Voe"/>
                                     <constraint firstAttribute="trailing" secondItem="j4X-IJ-cfS" secondAttribute="trailing" id="hS6-Dw-dW5"/>
-                                    <constraint firstItem="j4X-IJ-cfS" firstAttribute="top" secondItem="20S-wq-mKA" secondAttribute="bottom" id="kXF-T5-1c5"/>
+                                    <constraint firstItem="diP-tp-Wxf" firstAttribute="top" secondItem="d0l-so-BHk" secondAttribute="top" constant="16" id="vdP-vZ-0zh"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -62,9 +55,11 @@
                     <navigationItem key="navigationItem" id="mgz-0U-wi6"/>
                     <connections>
                         <outlet property="HealthRecordButton" destination="j4X-IJ-cfS" id="xvi-b2-cmL"/>
-                        <outlet property="heartRateLabel" destination="20S-wq-mKA" id="no8-x5-mFF"/>
+                        <outlet property="contentView" destination="d0l-so-BHk" id="P7P-vc-tio"/>
+                        <outlet property="summaryStackView" destination="diP-tp-Wxf" id="qYk-hg-wCS"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3708.6956521739135" y="83.705357142857139"/>
         </scene>
@@ -105,7 +100,7 @@
         <!--Home-->
         <scene sceneID="a53-7I-JD1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Zn-ZH-g4e" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Zn-ZH-g4e" customClass="NavigationController" customModule="WarmUpKitMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="scanner" catalog="system" id="DWe-iN-Itc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JkT-R5-Tkf">
@@ -124,7 +119,7 @@
         <!--Health Record-->
         <scene sceneID="bWf-Tv-ZRQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h6Q-cg-l2e" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h6Q-cg-l2e" customClass="NavigationController" customModule="WarmUpKitMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Health Record" image="list.dash" catalog="system" id="Rwy-9O-jeg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yFM-us-xlz">

@@ -11,6 +11,14 @@
 		0433B58128ED768100B821EF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0433B58028ED768100B821EF /* HealthKit.framework */; };
 		0433B58428ED76B900B821EF /* HealthKitManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433B58328ED76B900B821EF /* HealthKitManger.swift */; };
 		0433B58528ED76B900B821EF /* HealthKitManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433B58328ED76B900B821EF /* HealthKitManger.swift */; };
+		0440C99728F6A9FF002E070A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440C99628F6A9FF002E070A /* UIViewController+Extensions.swift */; };
+		0440C99928F6AF33002E070A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440C99828F6AF33002E070A /* NavigationController.swift */; };
+		0440C99B28F6AFB5002E070A /* NavigationBarStyleChangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440C99A28F6AFB5002E070A /* NavigationBarStyleChangeable.swift */; };
+		0440C99E28F6B3CB002E070A /* MainCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0440C99D28F6B3CB002E070A /* MainCardView.xib */; };
+		0440C9A028F6B425002E070A /* MainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440C99F28F6B425002E070A /* MainCardView.swift */; };
+		0457D53828F420E1006D059A /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0457D53728F420E1006D059A /* UIView+Extensions.swift */; };
+		0457D53B28F424C5006D059A /* StepSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0457D53928F424C4006D059A /* StepSummaryView.swift */; };
+		0457D53C28F424C5006D059A /* StepSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0457D53A28F424C4006D059A /* StepSummaryView.xib */; };
 		048E5DB628EFD8B800F9E1D8 /* HealthRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E5DB428EFD8B800F9E1D8 /* HealthRecordViewController.swift */; };
 		048E5DB928EFD9D400F9E1D8 /* HealthRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048E5DB828EFD9D400F9E1D8 /* HealthRecord.storyboard */; };
 		048E5DBB28EFDCF900F9E1D8 /* HealthRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E5DBA28EFDCF900F9E1D8 /* HealthRecordViewModel.swift */; };
@@ -33,6 +41,9 @@
 		04FA98DB28F188A700C117C2 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA98DA28F188A700C117C2 /* HomePageViewController.swift */; };
 		04FA98DE28F188C700C117C2 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA98DD28F188C700C117C2 /* HomePageViewModel.swift */; };
 		04FA98E128F194F400C117C2 /* ColorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA98E028F194F400C117C2 /* ColorCode.swift */; };
+		05043A35EB27CECC77488998 /* Pods_WarmUpKitMobile_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4B395E62FD12F19A0DF7FF /* Pods_WarmUpKitMobile_WatchKit_Extension.framework */; };
+		71AC7BBBF81BF8AC24A2F1F8 /* Pods_WarmUpKitMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF691C591405168BD4DC254 /* Pods_WarmUpKitMobile.framework */; };
+		DE1C09968769DF37272802BD /* Pods_WarmUpKitMobile_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4317E93C80BECC9958FE86 /* Pods_WarmUpKitMobile_WatchKit_App.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +94,14 @@
 		0433B57E28ED768100B821EF /* WarmUpKitMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WarmUpKitMobile.entitlements; sourceTree = "<group>"; };
 		0433B58028ED768100B821EF /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		0433B58328ED76B900B821EF /* HealthKitManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManger.swift; sourceTree = "<group>"; };
+		0440C99628F6A9FF002E070A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		0440C99828F6AF33002E070A /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		0440C99A28F6AFB5002E070A /* NavigationBarStyleChangeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarStyleChangeable.swift; sourceTree = "<group>"; };
+		0440C99D28F6B3CB002E070A /* MainCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardView.xib; sourceTree = "<group>"; };
+		0440C99F28F6B425002E070A /* MainCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardView.swift; sourceTree = "<group>"; };
+		0457D53728F420E1006D059A /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		0457D53928F424C4006D059A /* StepSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSummaryView.swift; sourceTree = "<group>"; };
+		0457D53A28F424C4006D059A /* StepSummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepSummaryView.xib; sourceTree = "<group>"; };
 		048E5DB428EFD8B800F9E1D8 /* HealthRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRecordViewController.swift; sourceTree = "<group>"; };
 		048E5DB828EFD9D400F9E1D8 /* HealthRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HealthRecord.storyboard; sourceTree = "<group>"; };
 		048E5DBA28EFDCF900F9E1D8 /* HealthRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRecordViewModel.swift; sourceTree = "<group>"; };
@@ -109,14 +128,32 @@
 		04FA98DA28F188A700C117C2 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		04FA98DD28F188C700C117C2 /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		04FA98E028F194F400C117C2 /* ColorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCode.swift; sourceTree = "<group>"; };
+		0F3300CEAAAE2FCE53A74D88 /* Pods-WarmUpKitMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WarmUpKitMobile.release.xcconfig"; path = "Target Support Files/Pods-WarmUpKitMobile/Pods-WarmUpKitMobile.release.xcconfig"; sourceTree = "<group>"; };
+		350E08F071B90C7D42226E9B /* Pods-WarmUpKitMobile WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WarmUpKitMobile WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-WarmUpKitMobile WatchKit Extension/Pods-WarmUpKitMobile WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		4D4B395E62FD12F19A0DF7FF /* Pods_WarmUpKitMobile_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WarmUpKitMobile_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6614F1318DEB7455E2E2CC8A /* Pods-WarmUpKitMobile WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WarmUpKitMobile WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-WarmUpKitMobile WatchKit Extension/Pods-WarmUpKitMobile WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		6F9AFBCE3A72ACA68AAD7B7F /* Pods-WarmUpKitMobile WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WarmUpKitMobile WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-WarmUpKitMobile WatchKit App/Pods-WarmUpKitMobile WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
+		731D9F6FEC51510D3AD833A4 /* Pods-WarmUpKitMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WarmUpKitMobile.debug.xcconfig"; path = "Target Support Files/Pods-WarmUpKitMobile/Pods-WarmUpKitMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		8D4317E93C80BECC9958FE86 /* Pods_WarmUpKitMobile_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WarmUpKitMobile_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2863629A909B620400E88E7 /* Pods-WarmUpKitMobile WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WarmUpKitMobile WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-WarmUpKitMobile WatchKit App/Pods-WarmUpKitMobile WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
+		FEF691C591405168BD4DC254 /* Pods_WarmUpKitMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WarmUpKitMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		00F958000FADF7B7A4715BF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE1C09968769DF37272802BD /* Pods_WarmUpKitMobile_WatchKit_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04B7E43D28EAE6F70019A4F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0433B58128ED768100B821EF /* HealthKit.framework in Frameworks */,
+				71AC7BBBF81BF8AC24A2F1F8 /* Pods_WarmUpKitMobile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				040D447C28ED895B0056A5A9 /* HealthKit.framework in Frameworks */,
+				05043A35EB27CECC77488998 /* Pods_WarmUpKitMobile_WatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +174,9 @@
 			children = (
 				040D447B28ED895B0056A5A9 /* HealthKit.framework */,
 				0433B58028ED768100B821EF /* HealthKit.framework */,
+				FEF691C591405168BD4DC254 /* Pods_WarmUpKitMobile.framework */,
+				8D4317E93C80BECC9958FE86 /* Pods_WarmUpKitMobile_WatchKit_App.framework */,
+				4D4B395E62FD12F19A0DF7FF /* Pods_WarmUpKitMobile_WatchKit_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -146,6 +187,27 @@
 				0433B58328ED76B900B821EF /* HealthKitManger.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		0440C99528F69946002E070A /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				0440C99C28F6B329002E070A /* NavigationBarStyle */,
+				0457D53928F424C4006D059A /* StepSummaryView.swift */,
+				0457D53A28F424C4006D059A /* StepSummaryView.xib */,
+				0440C99F28F6B425002E070A /* MainCardView.swift */,
+				0440C99D28F6B3CB002E070A /* MainCardView.xib */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		0440C99C28F6B329002E070A /* NavigationBarStyle */ = {
+			isa = PBXGroup;
+			children = (
+				0440C99828F6AF33002E070A /* NavigationController.swift */,
+				0440C99A28F6AFB5002E070A /* NavigationBarStyleChangeable.swift */,
+			);
+			path = NavigationBarStyle;
 			sourceTree = "<group>";
 		};
 		048E5DB328EFD89B00F9E1D8 /* HealthRecord */ = {
@@ -167,6 +229,7 @@
 				04B7E46628EAE6FA0019A4F3 /* WarmUpKitMobile WatchKit Extension */,
 				04B7E44128EAE6F70019A4F3 /* Products */,
 				0433B57F28ED768100B821EF /* Frameworks */,
+				DFA219E9C8C3E743A4E5F618 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +246,7 @@
 		04B7E44228EAE6F70019A4F3 /* WarmUpKitMobile */ = {
 			isa = PBXGroup;
 			children = (
+				0440C99528F69946002E070A /* Component */,
 				04FA98DF28F194E600C117C2 /* Extensions */,
 				04FA98DC28F188B300C117C2 /* HomePage */,
 				04FA98D528F1781700C117C2 /* Info */,
@@ -244,8 +308,23 @@
 			isa = PBXGroup;
 			children = (
 				04FA98E028F194F400C117C2 /* ColorCode.swift */,
+				0457D53728F420E1006D059A /* UIView+Extensions.swift */,
+				0440C99628F6A9FF002E070A /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DFA219E9C8C3E743A4E5F618 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				731D9F6FEC51510D3AD833A4 /* Pods-WarmUpKitMobile.debug.xcconfig */,
+				0F3300CEAAAE2FCE53A74D88 /* Pods-WarmUpKitMobile.release.xcconfig */,
+				E2863629A909B620400E88E7 /* Pods-WarmUpKitMobile WatchKit App.debug.xcconfig */,
+				6F9AFBCE3A72ACA68AAD7B7F /* Pods-WarmUpKitMobile WatchKit App.release.xcconfig */,
+				6614F1318DEB7455E2E2CC8A /* Pods-WarmUpKitMobile WatchKit Extension.debug.xcconfig */,
+				350E08F071B90C7D42226E9B /* Pods-WarmUpKitMobile WatchKit Extension.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,10 +334,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04B7E47D28EAE6FB0019A4F3 /* Build configuration list for PBXNativeTarget "WarmUpKitMobile" */;
 			buildPhases = (
+				478882540C6DE9FB9721E223 /* [CP] Check Pods Manifest.lock */,
 				04B7E43C28EAE6F70019A4F3 /* Sources */,
 				04B7E43D28EAE6F70019A4F3 /* Frameworks */,
 				04B7E43E28EAE6F70019A4F3 /* Resources */,
 				04B7E47C28EAE6FB0019A4F3 /* Embed Watch Content */,
+				05A670CF46C5660419052D6C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -274,8 +355,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04B7E47928EAE6FB0019A4F3 /* Build configuration list for PBXNativeTarget "WarmUpKitMobile WatchKit App" */;
 			buildPhases = (
+				E429E17F6081FFBCE909CC9D /* [CP] Check Pods Manifest.lock */,
 				04B7E45228EAE6F90019A4F3 /* Resources */,
 				04B7E47828EAE6FB0019A4F3 /* Embed App Extensions */,
+				00F958000FADF7B7A4715BF9 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -291,6 +374,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04B7E47528EAE6FB0019A4F3 /* Build configuration list for PBXNativeTarget "WarmUpKitMobile WatchKit Extension" */;
 			buildPhases = (
+				0F1E801844AAC8ACDFC7D437 /* [CP] Check Pods Manifest.lock */,
 				04B7E45E28EAE6FA0019A4F3 /* Sources */,
 				04B7E45F28EAE6FA0019A4F3 /* Frameworks */,
 				04B7E46028EAE6FA0019A4F3 /* Resources */,
@@ -350,9 +434,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0457D53C28F424C5006D059A /* StepSummaryView.xib in Resources */,
 				04B7E45028EAE6F90019A4F3 /* LaunchScreen.storyboard in Resources */,
 				04B7E44D28EAE6F90019A4F3 /* Assets.xcassets in Resources */,
 				04B7E44B28EAE6F70019A4F3 /* Main.storyboard in Resources */,
+				0440C99E28F6B3CB002E070A /* MainCardView.xib in Resources */,
 				048E5DB928EFD9D400F9E1D8 /* HealthRecord.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +462,92 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		05A670CF46C5660419052D6C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WarmUpKitMobile/Pods-WarmUpKitMobile-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WarmUpKitMobile/Pods-WarmUpKitMobile-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WarmUpKitMobile/Pods-WarmUpKitMobile-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0F1E801844AAC8ACDFC7D437 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WarmUpKitMobile WatchKit Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		478882540C6DE9FB9721E223 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WarmUpKitMobile-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E429E17F6081FFBCE909CC9D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WarmUpKitMobile WatchKit App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		04B7E43C28EAE6F70019A4F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -383,6 +555,12 @@
 			files = (
 				0433B58428ED76B900B821EF /* HealthKitManger.swift in Sources */,
 				04B7E44828EAE6F70019A4F3 /* ViewController.swift in Sources */,
+				0440C99728F6A9FF002E070A /* UIViewController+Extensions.swift in Sources */,
+				0457D53B28F424C5006D059A /* StepSummaryView.swift in Sources */,
+				0457D53828F420E1006D059A /* UIView+Extensions.swift in Sources */,
+				0440C99928F6AF33002E070A /* NavigationController.swift in Sources */,
+				0440C99B28F6AFB5002E070A /* NavigationBarStyleChangeable.swift in Sources */,
+				0440C9A028F6B425002E070A /* MainCardView.swift in Sources */,
 				04FA98DE28F188C700C117C2 /* HomePageViewModel.swift in Sources */,
 				04B7E44428EAE6F70019A4F3 /* AppDelegate.swift in Sources */,
 				04FA98D728F1783000C117C2 /* InfoViewController.swift in Sources */,
@@ -562,6 +740,7 @@
 		};
 		04B7E47628EAE6FB0019A4F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6614F1318DEB7455E2E2CC8A /* Pods-WarmUpKitMobile WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "WarmUpKitMobile WatchKit Extension/WarmUpKitMobile WatchKit Extension.entitlements";
@@ -598,6 +777,7 @@
 		};
 		04B7E47728EAE6FB0019A4F3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 350E08F071B90C7D42226E9B /* Pods-WarmUpKitMobile WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "WarmUpKitMobile WatchKit Extension/WarmUpKitMobile WatchKit Extension.entitlements";
@@ -635,6 +815,7 @@
 		};
 		04B7E47A28EAE6FB0019A4F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2863629A909B620400E88E7 /* Pods-WarmUpKitMobile WatchKit App.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -661,6 +842,7 @@
 		};
 		04B7E47B28EAE6FB0019A4F3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F9AFBCE3A72ACA68AAD7B7F /* Pods-WarmUpKitMobile WatchKit App.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -688,6 +870,7 @@
 		};
 		04B7E47E28EAE6FB0019A4F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 731D9F6FEC51510D3AD833A4 /* Pods-WarmUpKitMobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -723,6 +906,7 @@
 		};
 		04B7E47F28EAE6FB0019A4F3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F3300CEAAAE2FCE53A74D88 /* Pods-WarmUpKitMobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
