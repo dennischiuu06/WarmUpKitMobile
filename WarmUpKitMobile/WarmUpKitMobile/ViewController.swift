@@ -16,22 +16,25 @@ class TabBarPageViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupMiddleButton()
+    }
+
+    func setupMiddleButton() {
+        let tabBarAppearance = UITabBarAppearance()
+        let tabBarItemAppearance = UITabBarItemAppearance()
+
+        tabBarItemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorCode.grey()]
+
+        tabBarAppearance.stackedLayoutAppearance = tabBarItemAppearance
+
         tabBar.tintColor = .label
         tabBar.barTintColor = .systemGray
         tabBar.backgroundColor = ColorCode.lightSlate()
         self.selectedIndex = 0
-        setupMiddleButton()
-//        setupUI()
-    }
-    
-//    func setupUI() {
-//        if let tabBarItems = tabBar.items {
-//            for tabBarItem in tabBarItems {
-////                print(tabBarItem.title)
-//            }
-//        }
-//    }
-    func setupMiddleButton() {
+
+        tabBar.standardAppearance = tabBarAppearance
+        tabBar.scrollEdgeAppearance = tabBarAppearance
+        
         let custoButton = UIButton(frame: CGRect(x: (self.view.bounds.width / 2) - 25, y: -20, width: 60, height: 60 ))
         
         custoButton.setBackgroundImage(UIImage(named: "home_icon"), for: .normal)

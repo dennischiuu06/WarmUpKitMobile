@@ -16,15 +16,15 @@ protocol NavigationBarStyleChangeable {
 extension NavigationBarStyleChangeable {
     var preferredTextAttributes: [NSAttributedString.Key: AnyObject] {
         return  [.font: UIFont.systemFont(ofSize: 16),
-                 .foregroundColor: ColorCode.darkGrey()]
+                 .foregroundColor: ColorCode.backgroundGrey()]
     }
 
     var preferredBarTintColor: UIColor {
-        return ColorCode.newGreyBackground()
+        return ColorCode.backgroundGrey()
     }
 
     var preferredTintColor: UIColor {
-        return ColorCode.darkGrey()
+        return ColorCode.backgroundGrey()
     }
 }
 
@@ -33,15 +33,15 @@ protocol NavigationBarStyleChangeableLightGrey: NavigationBarStyleChangeable, Vi
 extension NavigationBarStyleChangeableLightGrey {
     var preferredTextAttributes: [NSAttributedString.Key: AnyObject] {
         return  [.font: UIFont.systemFont(ofSize: 16),
-                 .foregroundColor: ColorCode.darkGrey()]
+                 .foregroundColor: ColorCode.backgroundGrey()]
     }
 
     var preferredBarTintColor: UIColor {
-        return ColorCode.newGreyBackground()
+        return ColorCode.backgroundGrey()
     }
 
     var preferredTintColor: UIColor {
-        return ColorCode.darkGrey()
+        return ColorCode.backgroundGrey()
     }
     
     var preferredStatusBarStyle: UIStatusBarStyle {

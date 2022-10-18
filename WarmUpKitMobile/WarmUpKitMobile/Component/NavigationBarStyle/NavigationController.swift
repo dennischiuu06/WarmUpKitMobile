@@ -16,14 +16,14 @@ class NavigationController: UINavigationController {
         print("NavigationController")
         // FIXME: Create a flag here, now dev doesn't contian ui alignment codes
         
-        UINavigationBar.appearance().tintColor = ColorCode.darkGrey()
+        UINavigationBar.appearance().tintColor = ColorCode.backgroundGrey()
         
         updateBackButtonImageWithOffsetMargin()
         
         let offset = UIOffset(horizontal: -10, vertical: -5)
         let barTintColor = ColorCode.newGreyBackground()
         let titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
-                                   NSAttributedString.Key.foregroundColor: ColorCode.darkGrey()]
+                                   NSAttributedString.Key.foregroundColor: ColorCode.backgroundGrey()]
          
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(offset, for:.default)
         UINavigationBar.appearance().isTranslucent = false
