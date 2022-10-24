@@ -35,16 +35,26 @@ class TabBarPageViewController: UITabBarController {
         tabBar.standardAppearance = tabBarAppearance
         tabBar.scrollEdgeAppearance = tabBarAppearance
         
-        let custoButton = UIButton(frame: CGRect(x: (self.view.bounds.width / 2) - 25, y: -20, width: 60, height: 60 ))
+        var filled = UIButton.Configuration.filled()
+        filled.buttonSize = .large
+        filled.image = UIImage(named: "bodyScan")
+        filled.imagePlacement = .trailing
+        filled.imagePadding = 2
+        filled.baseBackgroundColor = ColorCode.separatorLightBlue()
+
+        let customButton = UIButton(configuration: filled, primaryAction: nil)
+        customButton.setBackgroundImage(UIImage(named: "bodyScan"), for: .normal)
+        customButton.imageView?.contentMode = .scaleAspectFit
+        customButton.frame = CGRect(x: (self.view.bounds.width / 2) - 25, y: -20, width: 50, height: 50)
+        customButton.layer.cornerRadius = 0.5 * customButton.bounds.size.width
+        customButton.clipsToBounds = true
+        customButton.tintColor = .red
+        customButton.layer.shadowColor = ColorCode.darkGrey().cgColor
+        customButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+
+        self.tabBar.addSubview(customButton)
         
-        custoButton.setBackgroundImage(UIImage(named: "home_icon"), for: .normal)
-        custoButton.layer.shadowColor = UIColor.black.cgColor
-        custoButton.layer.shadowOpacity = 0.1
-        custoButton.layer.shadowOffset = CGSize(width: 4, height: 4)
-        
-        self.tabBar.addSubview(custoButton)
-        
-        custoButton.addTarget(self, action: #selector(customButtonAction), for: .touchUpInside)
+        customButton.addTarget(self, action: #selector(customButtonAction), for: .touchUpInside)
         self.view.layoutIfNeeded()
     }
     

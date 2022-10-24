@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		040D447C28ED895B0056A5A9 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040D447B28ED895B0056A5A9 /* HealthKit.framework */; };
+		04113421290629DD00A5D2A3 /* HealthKitManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433B58328ED76B900B821EF /* HealthKitManger.swift */; };
 		0433B58128ED768100B821EF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0433B58028ED768100B821EF /* HealthKit.framework */; };
 		0433B58428ED76B900B821EF /* HealthKitManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433B58328ED76B900B821EF /* HealthKitManger.swift */; };
-		0433B58528ED76B900B821EF /* HealthKitManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433B58328ED76B900B821EF /* HealthKitManger.swift */; };
 		0440C99728F6A9FF002E070A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440C99628F6A9FF002E070A /* UIViewController+Extensions.swift */; };
 		0440C99928F6AF33002E070A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440C99828F6AF33002E070A /* NavigationController.swift */; };
 		0440C99B28F6AFB5002E070A /* NavigationBarStyleChangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440C99A28F6AFB5002E070A /* NavigationBarStyleChangeable.swift */; };
@@ -20,7 +20,6 @@
 		0457D53B28F424C5006D059A /* StepSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0457D53928F424C4006D059A /* StepSummaryView.swift */; };
 		0457D53C28F424C5006D059A /* StepSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0457D53A28F424C4006D059A /* StepSummaryView.xib */; };
 		048E5DB628EFD8B800F9E1D8 /* HealthRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E5DB428EFD8B800F9E1D8 /* HealthRecordViewController.swift */; };
-		048E5DB928EFD9D400F9E1D8 /* HealthRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048E5DB828EFD9D400F9E1D8 /* HealthRecord.storyboard */; };
 		048E5DBB28EFDCF900F9E1D8 /* HealthRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E5DBA28EFDCF900F9E1D8 /* HealthRecordViewModel.swift */; };
 		04B7E44428EAE6F70019A4F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7E44328EAE6F70019A4F3 /* AppDelegate.swift */; };
 		04B7E44628EAE6F70019A4F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7E44528EAE6F70019A4F3 /* SceneDelegate.swift */; };
@@ -223,7 +222,6 @@
 		04B7E43728EAE6F70019A4F3 = {
 			isa = PBXGroup;
 			children = (
-				0433B58228ED76A200B821EF /* Shared */,
 				04B7E44228EAE6F70019A4F3 /* WarmUpKitMobile */,
 				04B7E45828EAE6F90019A4F3 /* WarmUpKitMobile WatchKit App */,
 				04B7E46628EAE6FA0019A4F3 /* WarmUpKitMobile WatchKit Extension */,
@@ -246,6 +244,7 @@
 		04B7E44228EAE6F70019A4F3 /* WarmUpKitMobile */ = {
 			isa = PBXGroup;
 			children = (
+				0433B58228ED76A200B821EF /* Shared */,
 				0440C99528F69946002E070A /* Component */,
 				04FA98DF28F194E600C117C2 /* Extensions */,
 				04FA98DC28F188B300C117C2 /* HomePage */,
@@ -439,7 +438,6 @@
 				04B7E44D28EAE6F90019A4F3 /* Assets.xcassets in Resources */,
 				04B7E44B28EAE6F70019A4F3 /* Main.storyboard in Resources */,
 				0440C99E28F6B3CB002E070A /* MainCardView.xib in Resources */,
-				048E5DB928EFD9D400F9E1D8 /* HealthRecord.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,7 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0433B58528ED76B900B821EF /* HealthKitManger.swift in Sources */,
+				04113421290629DD00A5D2A3 /* HealthKitManger.swift in Sources */,
 				04B7E46C28EAE6FA0019A4F3 /* NotificationController.swift in Sources */,
 				04B7E46E28EAE6FA0019A4F3 /* ComplicationController.swift in Sources */,
 				04B7E46A28EAE6FA0019A4F3 /* ExtensionDelegate.swift in Sources */,
@@ -900,7 +898,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -936,7 +934,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

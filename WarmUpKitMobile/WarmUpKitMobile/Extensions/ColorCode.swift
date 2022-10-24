@@ -31,6 +31,9 @@ extension ColorCode {
         return UIColor(red: value(248), green: value(248), blue: value(248), alpha: alpha)
     }
     
+    public static func blue(alpha: CGFloat = 1) -> UIColor {
+        return UIColor(red: value(0), green: value(113), blue: value(140), alpha: alpha)
+    }
     /// #E6E7E8
     public static func lightState(alpha: CGFloat = 1) -> UIColor {
         return UIColor(red: value(230), green: value(231), blue: value(232), alpha: alpha)
@@ -39,6 +42,10 @@ extension ColorCode {
     // #4C4C4C #colorLiteral(red: 0.2980392157, green: 0.2980392157, blue: 0.2980392157, alpha: 1)
     static func darkGrey(alpha: CGFloat = 1) -> UIColor {
         return UIColor(red: value(76), green: value(76), blue: value(76), alpha: alpha)
+    }
+    
+    static func separatorLightBlue(alpha: CGFloat = 1) -> UIColor {
+        return UIColor(red: value(197), green: value(197), blue: value(197), alpha: alpha)
     }
     
     /// #808285

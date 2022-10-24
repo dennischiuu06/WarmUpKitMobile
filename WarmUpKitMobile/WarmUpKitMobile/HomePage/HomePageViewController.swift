@@ -11,7 +11,6 @@ import Charts
 import HealthKit
 
 class HomePageViewController: UIViewController {
-    @IBOutlet weak var HealthRecordButton: UIButton!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var summaryStackView: UIStackView!
     @IBOutlet weak var barChartView: UIView!
@@ -39,18 +38,18 @@ class HomePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        healthKitManager.authorizeHealthKitAccess { (success, error) in
-            
-        }
-        //        self.healthKitManager.readStep()
         setupUI()
+        healthKitManager.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
-        //        testingInfo()
-        getHealthKitStepsInfo()
-        getHealthEnergyInfo()
+        healthKitManager.authorizeHealthKitAccess { (success, error) in
+            self.healthKitManager.getActiveEnergy()
+        }
+//        getHealthKitStepsInfo()
+        healthKitManager.getActiveEnergy()
+        healthKitManager.getHealthKitStepsInfo()
     }
     
     func setupUI() {
@@ -63,23 +62,19 @@ class HomePageViewController: UIViewController {
         scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         setupNavigationTitle(title: "Home Page")
-        summaryStackView.axis = .vertical
-        summaryStackView.distribution = .fill
-        summaryStackView.spacing = 16
-        summaryStackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        summaryStackView.isLayoutMarginsRelativeArrangement = true
-        
         summaryStackView.addArrangedSubview(mainBoard)
         summaryStackView.addArrangedSubview(summaryBoard)
         summaryStackView.addArrangedSubview(secondSummaryBoard)
         
+        // Bar Chart view
         barChart.frame = CGRect(x: 0, y: 0, width: barChartView.bounds.width - 32 , height: barChartView.bounds.height - 32)
-        
+        barChart.noDataText = "You need to provide data for the chart."
         barChartView.addSubview(barChart)
         
-        getHealthKitStepsInfo()
-        getHealthEnergyInfo()
-        testingInfo()
+        barChart.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+//        getHealthKitStepsInfo()
     }
     
     @IBAction func buttonAction(_ sender: Any) {
@@ -94,238 +89,146 @@ class HomePageViewController: UIViewController {
 }
 
 extension HomePageViewController {
-    func getHealthKitStepsInfo() {
-        let date = Date()
-        
-        func getStartDay() -> Date {
-            let comp: DateComponents = Calendar.current.dateComponents([.year, .month], from: date)
-            let startOfMonth = Calendar.current.date(from: comp)!
-            return startOfMonth
-        }
-        
-        func getEndDay(startOfMonth: Date) -> Date {
-            var comps2 = DateComponents()
-            comps2.month = 1
-            comps2.day = -1
-            let endOfMonth = Calendar.current.date(byAdding: comps2, to: startOfMonth)
+//    func getHealthKitStepsInfo() {
+//        guard HKHealthStore.isHealthDataAvailable() else {
+//            return
+//        }
+//
+//        let startOfMonth = healthKitManager.getStartDay()
+//        let endOfMonth = healthKitManager.getEndDay(startOfMonth: startOfMonth)
+//        let dayInt = healthKitManager.getDayInt(endOfMonth: endOfMonth)
+//        print("startOfMonth", startOfMonth)
+//        print("endOfMonth", endOfMonth)
+//        print("dayInt", dayInt)
+//
+//        guard let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
+//            fatalError("*** Unable to get the step count type ***")
+//        }
+//
+//        var interval = DateComponents()
+//        interval.day = 1
+//
+//        let calendar = Calendar.current
+//        //        let anchorDate = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: self.date)
+//        let anchorDate = calendar.date(bySetting: .day, value: 1, of: healthKitManager.date)
+//
+//        let query = HKStatisticsCollectionQuery.init(quantityType: stepCountType,
+//                                                     quantitySamplePredicate: nil,
+//                                                     options: .cumulativeSum,
+//                                                     anchorDate: anchorDate!,
+//                                                     intervalComponents: interval)
+//
+//        query.initialResultsHandler = {
+//            query, results, error in
+//
+//            guard let statsCollection = results else {
+//                // Perform proper error handling here
+//                return
+//            }
+//            var dataEntries = [BarChartDataEntry]()
+//
+//            var thisDay = startOfMonth
+//            var totalSteps = 0.0
+//            for x in 1...10 {
+//                print(x)
+//                let barEntry = BarChartDataEntry(x: (Double(x)), y: 5)
+//                dataEntries.append(barEntry)
+//
+//                let nextDay: Date = calendar.date(byAdding: .day, value: 1, to: thisDay)!
+//                // Plot the weekly step counts over the past 3 months
+//                statsCollection.enumerateStatistics(from: thisDay, to: thisDay) { statistics, stop in
+//
+//                    if let quantity = statistics.sumQuantity() {
+//                        let _ = statistics.startDate
+//                        let value = quantity.doubleValue(for: HKUnit.count())
+//
+////                        let barEntry = BarChartDataEntry(x: (Double(i)), y: value)
+////                        dataEntries.append(barEntry)
+//                        totalSteps += value
+//                        // Call a custom method to plot each data point.String(describing: )
+//
+//                    }
+//                }
+//                thisDay = nextDay
+//            }
+//
+//
+//            DispatchQueue.main.async {
+//                self.summaryBoard.importData(iconKey: "walk_icon", title: "Steps", firstTitle: "Steps", firstContent: String(totalSteps), secondTitle: "Average Steps", secondContent: String(totalSteps / Double(dayInt)))
+//            }
+//            print(dataEntries.count)
+//            let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Steps")
+//            chartDataSet.colors = ChartColorTemplates.colorful()
+////            chartDataSet.drawValuesEnabled = false
+//            chartDataSet.notifyDataSetChanged()
+//            let chartData = BarChartData(dataSet: chartDataSet)
+//            chartData.barWidth = 0.5
+////            chartData.notifyDataChanged()
+//            self.barChart.data = chartData
+//            self.barChart.notifyDataSetChanged()
+////            self.barChart.xAxis.labelPosition = .bottom
+//            self.barChart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
+//        }
+//        healthKitManager.healthStore.execute(query)
+//    }
+    
+//    func getHealthEnergyInfo() {
+//        guard let energyType = HKSampleType.quantityType(forIdentifier: .activeEnergyBurned) else {
+//            print("Energy Burned type not available")
+//            return
+//        }
+//
+//        let startOfMonth = healthKitManager.getStartDay()
+//        let endOfMonth = healthKitManager.getEndDay(startOfMonth: startOfMonth)
+//        let predicate = HKQuery.predicateForSamples(withStart: startOfMonth, end: endOfMonth, options: .strictStartDate)
+//
+//        let energyQuery = HKSampleQuery(sampleType: energyType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) {(query, sample, error) in
+//            guard error == nil,let quantitySamples = sample as? [HKQuantitySample] else {
+//                print("Something went wrong: \(String(describing: error))")
+//                return
+//            }
+//
+//            let total = quantitySamples.reduce(0.0) { $0 + $1.quantity.doubleValue(for: HKUnit.kilocalorie()) }
+//
+//            DispatchQueue.main.async {
+//                self.secondSummaryBoard.importData(iconKey: "energy_icon", title: "Active Energy", firstTitle: "Active Energy", firstContent: String(total), secondTitle: "Average Kilocalories", secondContent: String(format: "%.2f", total))
+//            }
+//        }
+//        HKHealthStore().execute(energyQuery)
+//    }
+}
+
+extension HomePageViewController: WorkoutTrackingDelegate {
+    func didReceiveHealthKitStepCounts(stepCounts: Double, avgSteps: Double, stepsData: [Double]) {
+        DispatchQueue.main.async {
+            self.summaryBoard.importData(iconKey: "walk_icon", title: "Steps", firstTitle: "Steps", firstContent: String(stepCounts), secondTitle: "Average Steps", secondContent: String(format: "%.2f", avgSteps))
             
-            return endOfMonth!
-        }
-        
-        func getDayInt(endOfMonth: Date) -> Int {
-            let dayFormatter = DateFormatter()
-            dayFormatter.dateFormat = "dd"
-            let dayString = dayFormatter.string(from: endOfMonth)
-            let dayInt = Int(dayString)
-            return dayInt!
-        }
-        
-        guard HKHealthStore.isHealthDataAvailable() else {
-            return
-        }
-        
-        let startOfMonth = getStartDay()
-        let endOfMonth = getEndDay(startOfMonth: startOfMonth)
-        let dayInt = getDayInt(endOfMonth: endOfMonth)
-        print("startOfMonth", startOfMonth)
-        print("endOfMonth", endOfMonth)
-        print("dayInt", dayInt)
-        
-        guard let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
-            fatalError("*** Unable to get the step count type ***")
-        }
-        
-        var interval = DateComponents()
-        interval.day = 1
-        
-        let calendar = Calendar.current
-        //        let anchorDate = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: self.date)
-        let anchorDate = calendar.date(bySetting: .day, value: 1, of: date)
-        
-        let query = HKStatisticsCollectionQuery.init(quantityType: stepCountType,
-                                                     quantitySamplePredicate: nil,
-                                                     options: .cumulativeSum,
-                                                     anchorDate: anchorDate!,
-                                                     intervalComponents: interval)
-        
-        query.initialResultsHandler = {
-            query, results, error in
-            
-            guard let statsCollection = results else {
-                // Perform proper error handling here
-                return
-            }
             var dataEntries = [BarChartDataEntry]()
             
-            var thisDay = startOfMonth
-            var totalSteps = 0.0
-            for i in 1...dayInt {
-                let nextDay: Date = calendar.date(byAdding: .day, value: 1, to: thisDay)!
-                // Plot the weekly step counts over the past 3 months
-                statsCollection.enumerateStatistics(from: thisDay, to: thisDay) { statistics, stop in
-                    
-                    if let quantity = statistics.sumQuantity() {
-                        let _ = statistics.startDate
-                        let value = quantity.doubleValue(for: HKUnit.count())
-                        
-                        let barEntry = BarChartDataEntry(x: (Double(i)), y: value)
-                        dataEntries.append(barEntry)
-                        totalSteps += value
-                        // Call a custom method to plot each data point.String(describing: )
-                        
-                    }
-                }
-                thisDay = nextDay
-            }
-            
-            DispatchQueue.main.async {
-                self.summaryBoard.importData(iconKey: "walk_icon", title: "Steps", firstTitle: "Steps", firstContent: String(totalSteps), secondTitle: "Average Steps", secondContent: String(totalSteps / Double(dayInt)))
+            for (index, data) in stepsData.enumerated() {
+                let x = index + 1
+                let barEntry = BarChartDataEntry(x: (Double(x)), y: data)
+                dataEntries.append(barEntry)
             }
             
             let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Steps")
-            chartDataSet.drawValuesEnabled = false
+            chartDataSet.colors = ChartColorTemplates.colorful()
             chartDataSet.notifyDataSetChanged()
-            let chartData = BarChartData(dataSets: [chartDataSet])
+            let chartData = BarChartData(dataSet: chartDataSet)
             chartData.barWidth = 0.5
-            chartData.notifyDataChanged()
             self.barChart.data = chartData
             self.barChart.notifyDataSetChanged()
-            self.barChart.animate(xAxisDuration: 0.5, yAxisDuration: 0.5)
-            //            print("after chartView height : \(self.chartView.bounds.height)")
-            //            print("after barchartView height : \(self.barChartPlace.bounds.height)")
-            //
-            //            print("barchart x:\(self.barChartView.bounds.origin.x) y:\(self.barChartView.bounds.origin.y) width:\(self.barChartView.bounds.width) height:\(self.barChartView.bounds.height)")
-        }
-        healthKitManager.healthStore.execute(query)
-    }
-    
-    func testingInfo() {
-        let date = Date()
-        
-        func getStartDay() -> Date {
-            let comp: DateComponents = Calendar.current.dateComponents([.year, .month], from: date)
-            let startOfMonth = Calendar.current.date(from: comp)!
-            return startOfMonth
-        }
-        
-        func getEndDay(startOfMonth: Date) -> Date {
-            var comps2 = DateComponents()
-            comps2.month = 1
-            comps2.day = -1
-            let endOfMonth = Calendar.current.date(byAdding: comps2, to: startOfMonth)
-            
-            return endOfMonth!
-        }
-        
-        func getDayInt(endOfMonth: Date) -> Int {
-            let dayFormatter = DateFormatter()
-            dayFormatter.dateFormat = "dd"
-            let dayString = dayFormatter.string(from: endOfMonth)
-            let dayInt = Int(dayString)
-            return dayInt!
-        }
-        
-        guard let energyType = HKSampleType.quantityType(forIdentifier: .activeEnergyBurned) else {
-            print("Sample type not available")
-            return
-        }
-        
-        let startOfMonth = getStartDay()
-        let endOfMonth = getEndDay(startOfMonth: startOfMonth)
-        let dayInt = getDayInt(endOfMonth: endOfMonth)
-        
-        var interval = DateComponents()
-        interval.day = 1
-        
-        let calendar = Calendar.current
-        //        let anchorDate = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: self.date)
-        //        let anchorDate = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: Date())
-        let startOfDay = Calendar.current.startOfDay(for: Date())
-        
-        let now = Date()
-        
-        var anchorComponents = Calendar.current.dateComponents([.day, .month, .year], from: now)
-        anchorComponents.hour = 0
-        let anchorDate = Calendar.current.date(from: anchorComponents)!
-        
-        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
-        let query = HKStatisticsCollectionQuery.init(quantityType: energyType,
-                                                     quantitySamplePredicate: nil,
-                                                     options: .cumulativeSum,
-                                                     anchorDate: anchorDate,
-                                                     intervalComponents: interval)
-        
-        query.initialResultsHandler = {
-            _, results, error in
-            
-            guard let statsCollection = results else {
-                // Perform proper error handling here
-                return
-            }
-            var dataEntries = [BarChartDataEntry]()
-            
-            var thisDay = startOfMonth
-            var totalSteps = 0.0
-            for i in 1...dayInt {
-                let nextDay: Date = calendar.date(byAdding: .day, value: 1, to: thisDay)!
-                // Plot the weekly step counts over the past 3 months
-                statsCollection.enumerateStatistics(from: thisDay, to: thisDay) { statistics, stop in
-                    
-                    if let quantity = statistics.sumQuantity() {
-                        let _ = statistics.startDate
-                        let value = quantity.doubleValue(for: HKUnit.count())
-                        
-                        let barEntry = BarChartDataEntry(x: (Double(i)), y: value)
-                        dataEntries.append(barEntry)
-                        totalSteps += value
-                        // Call a custom method to plot each data point.String(describing: )
-                        
-                    }
-                }
-                thisDay = nextDay
-            }
-            
-            
-            let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Energy")
-            chartDataSet.drawValuesEnabled = false
-            chartDataSet.notifyDataSetChanged()
-            let chartData = BarChartData(dataSets: [chartDataSet])
-            chartData.barWidth = 0.5
-            chartData.notifyDataChanged()
-            self.barChart.data = chartData
-            self.barChart.notifyDataSetChanged()
-            self.barChart.animate(xAxisDuration: 0.5, yAxisDuration: 0.5)
-            //            print("after chartView height : \(self.chartView.bounds.height)")
-            //            print("after barchartView height : \(self.barChartPlace.bounds.height)")
+//            self.barChart.xAxis.labelPosition = .bottom
+            self.barChart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
+            //            chartDataSet.drawValuesEnabled = false
+            //            chartData.notifyDataChanged()
+
         }
     }
     
-    func getHealthEnergyInfo() {
-        guard let energyType = HKSampleType.quantityType(forIdentifier: .activeEnergyBurned) else {
-            print("Sample type not available")
-            return
+    func didReceiveHealthKitEnergy(_ energy: Double) {
+        DispatchQueue.main.async {
+            self.secondSummaryBoard.importData(iconKey: "energy_icon", title: "Active Energy", firstTitle: "Active Energy", firstContent: String(energy), secondTitle: "Average Kilocalories", secondContent: String(format: "%.2f", energy))
         }
-        
-        let now = Date()
-        let startOfDay = Calendar.current.startOfDay(for: now)
-        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
-        
-        let hkUnit = HKUnit.kilocalorie()
-        let energyQuery1 = HKSampleQuery(sampleType: energyType, predicate: predicate, limit: HKObjectQueryNoLimit,sortDescriptors: nil) { (query, sample, error) in
-        }
-        //        HKSampleQuery(
-        let energyQuery = HKSampleQuery(sampleType: energyType,predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) {(query, sample, error) in
-            guard error == nil,let quantitySamples = sample as? [HKQuantitySample] else {
-                print("Something went wrong: \(String(describing: error))")
-                return
-            }
-            
-            let total = quantitySamples.reduce(0.0) { $0 + $1.quantity.doubleValue(for: HKUnit.kilocalorie()) }
-            
-            DispatchQueue.main.async {
-                self.secondSummaryBoard.importData(iconKey: "energy_icon", title: "Active Energy", firstTitle: "Active Energy", firstContent: String(total), secondTitle: "Average Kilocalories", secondContent: String(format: "%.2f", total))
-            }
-        }
-        HKHealthStore().execute(energyQuery)
     }
 }

@@ -39,7 +39,6 @@ class StepSummaryView: UIView {
     }
     
     func importData(iconKey: String, title: String, firstTitle: String, firstContent: String, secondTitle: String, secondContent: String) {
-        setupUI()
         self.iconView.image = UIImage(named: iconKey)
         self.title.text = title
         self.firstSubTitle.text = firstTitle
