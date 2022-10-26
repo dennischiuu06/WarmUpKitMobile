@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,17 +21,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HeartRate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvf-vy-djV">
-                                <rect key="frame" x="138" y="64" width="139.5" height="40"/>
+                                <rect key="frame" x="138" y="60" width="139.5" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="26" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kpy-po-d4M">
-                                <rect key="frame" x="0.0" y="120" width="414" height="641"/>
+                                <rect key="frame" x="0.0" y="116" width="414" height="746"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="heartRate" id="L9Q-Ck-KLf" customClass="HealthRateDetailTableViewCell" customModule="WarmUpKitMobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="L9Q-Ck-KLf" id="nvf-7L-x17">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
@@ -94,20 +93,12 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heartrate" highlightedImage="heartRate" translatesAutoresizingMaskIntoConstraints="NO" id="Qk3-Dt-W7w">
-                                <rect key="frame" x="90" y="64" width="40" height="40"/>
+                                <rect key="frame" x="90" y="60" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="IPG-A4-TpA"/>
                                     <constraint firstAttribute="width" constant="40" id="Zuc-en-sQ7"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LeA-c1-6k7">
-                                <rect key="frame" x="20" y="791" width="374" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Close"/>
-                                <connections>
-                                    <action selector="closeAction:" destination="8Ad-Ps-ejY" eventType="touchUpInside" id="0ne-ZR-Sap"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cYv-Dj-6Te"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -118,16 +109,12 @@
                             <constraint firstItem="Kpy-po-d4M" firstAttribute="top" secondItem="Uvf-vy-djV" secondAttribute="bottom" constant="16" id="Qwo-DJ-g9P"/>
                             <constraint firstItem="Kpy-po-d4M" firstAttribute="leading" secondItem="4g4-HY-upW" secondAttribute="leading" id="R5r-yF-uVa"/>
                             <constraint firstItem="Kpy-po-d4M" firstAttribute="trailing" secondItem="4g4-HY-upW" secondAttribute="trailing" id="YN0-xI-sIn"/>
-                            <constraint firstItem="LeA-c1-6k7" firstAttribute="leading" secondItem="cYv-Dj-6Te" secondAttribute="leading" constant="20" id="bgn-RE-CAO"/>
                             <constraint firstItem="Uvf-vy-djV" firstAttribute="leading" secondItem="Qk3-Dt-W7w" secondAttribute="trailing" constant="8" id="hOx-cd-W2J"/>
-                            <constraint firstItem="wzl-hi-Pgh" firstAttribute="top" secondItem="LeA-c1-6k7" secondAttribute="bottom" constant="32" id="kBZ-aV-lsf"/>
+                            <constraint firstItem="cYv-Dj-6Te" firstAttribute="bottom" secondItem="Kpy-po-d4M" secondAttribute="bottom" id="hpj-Jb-naI"/>
                             <constraint firstItem="Qk3-Dt-W7w" firstAttribute="leading" secondItem="4g4-HY-upW" secondAttribute="leadingMargin" constant="70" id="n7Y-vY-bZm"/>
-                            <constraint firstItem="LeA-c1-6k7" firstAttribute="top" secondItem="Kpy-po-d4M" secondAttribute="bottom" constant="30" id="nP4-mu-6o9"/>
-                            <constraint firstItem="cYv-Dj-6Te" firstAttribute="trailing" secondItem="LeA-c1-6k7" secondAttribute="trailing" constant="20" id="v42-Jl-fOm"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="closeButton" destination="LeA-c1-6k7" id="IKr-oU-1pj"/>
                         <outlet property="tableView" destination="Kpy-po-d4M" id="tw8-nD-3cI"/>
                     </connections>
                 </viewController>

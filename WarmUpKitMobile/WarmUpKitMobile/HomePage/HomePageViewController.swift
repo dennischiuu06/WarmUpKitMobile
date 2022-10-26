@@ -107,6 +107,8 @@ extension HomePageViewController: WorkoutTrackingDelegate {
             chartData.barWidth = 0.5
             self.barChart.data = chartData
             self.barChart.notifyDataSetChanged()
+            self.barChart.highlightPerTapEnabled = true
+            self.barChart.doubleTapToZoomEnabled = false
 //            self.barChart.xAxis.labelPosition = .bottom
             self.barChart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
             //            chartDataSet.drawValuesEnabled = false

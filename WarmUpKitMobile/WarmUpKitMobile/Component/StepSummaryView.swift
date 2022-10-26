@@ -48,8 +48,7 @@ class StepSummaryView: UIView {
     }
     
     func setupUI() {
-        contentView.setShadow(color: ColorCode.lightState(), opacity: 1, radius: 4, offset: 4)
+        contentView.setShadow(color: ColorCode.darkGrey(), opacity: 1, radius: 4, offset: 4)
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 6
     }
 }
