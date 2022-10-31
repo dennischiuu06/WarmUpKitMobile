@@ -59,7 +59,17 @@ class TabBarPageViewController: UITabBarController {
     }
     
     @objc func customButtonAction(sender: UIButton) {
-        self.selectedIndex = 0
+        if let viewController = BodyScannerViewController.create() {
+            let navigationController = NavigationController(rootViewController: viewController)
+            
+            navigationController.modalPresentationStyle = .fullScreen
+            
+            if let nc = self.navigationController {
+                nc.pushViewController(navigationController, animated: true)
+            } else {
+                self.present(navigationController, animated: true) {}
+            }
+        }
     }
     
 }

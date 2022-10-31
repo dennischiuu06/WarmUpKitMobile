@@ -9,10 +9,29 @@ import UIKit
 import HealthKit
 import Charts
 
+private class CubicLineSampleFillFormatter: FillFormatter {
+    func getFillLinePosition(dataSet: LineChartDataSetProtocol, dataProvider: LineChartDataProvider) -> CGFloat {
+        return -10
+    }
+}
+
 class HealthRecordViewController: UIViewController, ChartViewDelegate {
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var scrollView: UIScrollView!
+//    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var contentView: UIView!
+
     @IBOutlet weak var chartView: PieChartView!
+    @IBOutlet weak var cubicChartView: LineChartView!
+    @IBOutlet weak var heartRateView: UIView!
+
+    @IBOutlet weak var highestImageView: UIImageView!
+    @IBOutlet weak var highestRateTitle: UILabel!
+    @IBOutlet weak var highestRateSubTitle: UILabel!
     
+    @IBOutlet weak var lowestRateImageView: UIImageView!
+    @IBOutlet weak var lowestRateTitle: UILabel!
+    @IBOutlet weak var lowestRateSubTitle: UILabel!
+
     var healthStore = HKHealthStore()
     
     var heartRateQuery: HKQuery?
@@ -36,15 +55,44 @@ class HealthRecordViewController: UIViewController, ChartViewDelegate {
             self.retrieveHeartRateData()
         }
         setupUI()
+        setUpHeartRateInfoBoard()
     }
     
     func setupUI() {
         self.view.backgroundColor = ColorCode.backgroundGrey()
-        chartView.setShadow(color: ColorCode.lightState(), opacity: 1, radius: 4, offset: 4)
         chartView.backgroundColor = .white
+        heartRateView.backgroundColor = .white
+        chartView.setShadow(color: ColorCode.lightState(), opacity: 1, radius: 4, offset: 4)
+        heartRateView.setShadow(color: ColorCode.lightState(), opacity: 1, radius: 4, offset: 4)
+
+        scrollView.backgroundColor = ColorCode.backgroundGrey()
+        contentView.backgroundColor = ColorCode.backgroundGrey()
+        scrollView.frame = view.bounds
+        scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         setupNavigationTitle(title: "Health Record Details Page")
         self.setupHalfChartView()
+    }
+    
+    func setUpHeartRateInfoBoard() {
+        highestImageView.image = UIImage(named: "highestHeartRate")
+        lowestRateImageView.image = UIImage(named: "lowestHeartRate")
+        
+        highestRateTitle.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
+        highestRateTitle.textColor = ColorCode.grey()
+        highestRateTitle.text = "HIGHEST RATE"
+        
+        highestRateSubTitle.font = UIFont(name: "Helvetica-Bold", size: 18)
+        highestRateSubTitle.textColor = ColorCode.darkGrey()
+        highestRateSubTitle.text = "120 BPM"
+
+        lowestRateTitle.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
+        lowestRateTitle.textColor = ColorCode.grey()
+        lowestRateTitle.text = "LOWEST RATE"
+        
+        lowestRateSubTitle.font = UIFont(name: "Helvetica-Bold", size: 18)
+        lowestRateSubTitle.textColor = ColorCode.darkGrey()
+        lowestRateSubTitle.text = "80 BPM"
     }
     
     func setupHalfChartView() {
@@ -77,6 +125,8 @@ class HealthRecordViewController: UIViewController, ChartViewDelegate {
         self.setDataCount(3, range: 100)
         
         chartView.animate(xAxisDuration: 1.4, easingOption: .easeOutBack)
+        
+        setupCubicChartView()
     }
     
     func baseChartViewSetUp() {
@@ -134,45 +184,120 @@ class HealthRecordViewController: UIViewController, ChartViewDelegate {
     }
 }
 
-extension HealthRecordViewController: UITableViewDataSource,UITableViewDelegate {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+extension HealthRecordViewController {
+    func setupCubicChartView() {
+        cubicChartView.delegate = self
+
+        cubicChartView.setViewPortOffsets(left: 35, top: 35, right: 20, bottom: 0)
+        cubicChartView.backgroundColor = .white
+        
+        cubicChartView.dragEnabled = true
+        cubicChartView.highlightPerTapEnabled = true
+        cubicChartView.setScaleEnabled(true)
+        cubicChartView.maxHighlightDistance = 300
+        cubicChartView.pinchZoomEnabled = true
+        cubicChartView.doubleTapToZoomEnabled = false
+
+        let l = cubicChartView.legend
+        l.form = .line
+        l.font = UIFont(name: "HelveticaNeue-Light", size: 11)!
+        l.textColor = ColorCode.blue()
+        l.horizontalAlignment = .left
+        l.verticalAlignment = .bottom
+        l.orientation = .horizontal
+        l.drawInside = false
+        
+        let xAxis = cubicChartView.xAxis
+        xAxis.labelFont = UIFont(name: "Helvetica-LightOblique", size: 12) ?? .systemFont(ofSize: 12)
+        xAxis.labelTextColor = ColorCode.darkGrey()
+        xAxis.drawAxisLineEnabled = false
+        
+        let leftAxis = cubicChartView.leftAxis
+        leftAxis.setLabelCount(8, force: false)
+        leftAxis.labelFont = UIFont(name: "HelveticaNeue-Light", size: 12) ?? .systemFont(ofSize: 12)
+        leftAxis.drawGridLinesEnabled = true
+        leftAxis.granularityEnabled = true
+        leftAxis.labelTextColor = ColorCode.darkGrey()
+        leftAxis.axisLineColor = ColorCode.darkGrey()
+        
+        cubicChartView.rightAxis.enabled = false
+
+        setCubicChartDataCount(31, range: 100)
+        
+        cubicChartView.animate(xAxisDuration: 2.5)
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "heartRate", for: indexPath) as? HealthRateDetailTableViewCell {
-//
-//            let heartRate = datasource[indexPath.row].quantity
-//            let time = datasource[indexPath.row].startDate
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-//            let timeString = dateFormatter.string(from: time)
-//
-            cell.importData(heartRate: "\(22)", timeInfo: "\(33)")
-            return cell
+    func setCubicChartDataCount(_ count: Int, range: UInt32) {
+        let yVals1 = (0..<count).map { (i) -> ChartDataEntry in
+            let mult = range + 1
+            let val = Double(arc4random_uniform(mult) + 40)
+            return ChartDataEntry(x: Double(i), y: val)
         }
-        return UITableViewCell()
+
+        let set1 = LineChartDataSet(entries: yVals1, label: "DataSet 1")
+        set1.setColor(UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1))
+        set1.mode = .cubicBezier
+        set1.drawCirclesEnabled = true
+        set1.lineWidth = 2
+        set1.circleRadius = 4
+        set1.axisDependency = .left
+        set1.setCircleColor(ColorCode.darkGrey())
+        set1.highlightColor = UIColor.purple
+        set1.fillColor = .white
+        set1.fillAlpha = 65/255
+        set1.mode = .linear
+        set1.fillFormatter = CubicLineSampleFillFormatter()
+        set1.drawValuesEnabled = true
+        
+        let data = LineChartData(dataSet: set1)
+        data.setValueFont(UIFont(name: "HelveticaNeue-Light", size: 9)!)
+        data.setDrawValues(false)
+        
+        cubicChartView.data = data
+
     }
 }
 
+//extension HealthRecordViewController: UITableViewDataSource,UITableViewDelegate {
+//
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 10
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        if let cell = tableView.dequeueReusableCell(withIdentifier: "heartRate", for: indexPath) as? HealthRateDetailTableViewCell {
+////
+////            let heartRate = datasource[indexPath.row].quantity
+////            let time = datasource[indexPath.row].startDate
+////            let dateFormatter = DateFormatter()
+////            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+////            let timeString = dateFormatter.string(from: time)
+////
+//            cell.importData(heartRate: "\(22)", timeInfo: "\(33)")
+//            return cell
+//        }
+//        return UITableViewCell()
+//    }
+//}
+
+
 extension HealthRecordViewController: HeartRateDelegate {
-    
+
     func heartRateUpdated(heartRateSamples: [HKSample]) {
         guard let heartRateSamples = heartRateSamples as? [HKQuantitySample] else {
             return
         }
-        
+
         DispatchQueue.main.async {
             self.datasource.append(contentsOf: heartRateSamples)
-            self.tableView.reloadData()
+//            self.tableView.reloadData()
         }
     }
-    
+
     func retrieveHeartRateData() {
         if let query = healthKitManager.createHeartRateStreamingQuery(Date()) {
             self.heartRateQuery = query
@@ -182,23 +307,23 @@ extension HealthRecordViewController: HeartRateDelegate {
     }
 }
 
-
-// Health Rate Cell 
-class HealthRateDetailTableViewCell: UITableViewCell {
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var timeDetails: UILabel!
-    @IBOutlet weak var heartImageView: UIImageView!
-
-    
-    override func awakeFromNib() {
-        timeDetails.font = UIFont.systemFont(ofSize: 12)
-        title.font = UIFont.systemFont(ofSize: 12)
-        heartImageView.image = UIImage(named: "heart")
-    }
-    
-    func importData(heartRate: String, timeInfo: String) {
-        title.text = heartRate
-        timeDetails.text = timeInfo
-    }
-}
+//
+//// Health Rate Cell
+//class HealthRateDetailTableViewCell: UITableViewCell {
+//    @IBOutlet weak var title: UILabel!
+//    @IBOutlet weak var timeDetails: UILabel!
+//    @IBOutlet weak var heartImageView: UIImageView!
+//
+//
+//    override func awakeFromNib() {
+//        timeDetails.font = UIFont.systemFont(ofSize: 12)
+//        title.font = UIFont.systemFont(ofSize: 12)
+//        heartImageView.image = UIImage(named: "heart")
+//    }
+//
+//    func importData(heartRate: String, timeInfo: String) {
+//        title.text = heartRate
+//        timeDetails.text = timeInfo
+//    }
+//}
 

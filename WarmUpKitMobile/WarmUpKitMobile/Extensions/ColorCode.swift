@@ -56,4 +56,8 @@ extension ColorCode {
     static func newGreyBackground(alpha: CGFloat = 1) -> UIColor {
         return UIColor(red: value(248), green: value(248), blue: value(248), alpha: alpha)
     }
+    
+    static func linkRed(alpha: CGFloat = 1) -> UIColor {
+        return UIColor(red: value(244), green: value(117), blue: value(117), alpha: alpha)
+    }
 }

@@ -69,6 +69,7 @@ extension UIViewController {
             button.widthAnchor.constraint(equalToConstant: 24.0).isActive = true
             button.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
             button.setImage(#imageLiteral(resourceName: "iconArrowLeft"), for: .normal)
+            button.tintColor = .gray
             button.addTarget(self, action: #selector(clickOnBackButton), for: .touchUpInside)
             return button
         }())

@@ -74,6 +74,13 @@ class HomePageViewController: UIViewController {
         barChart.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        let xAxis = barChart.xAxis
+        xAxis.labelFont = UIFont(name: "Helvetica-LightOblique", size: 12) ?? .systemFont(ofSize: 12)
+        xAxis.labelTextColor = ColorCode.darkGrey()
+        xAxis.drawAxisLineEnabled = false
+        
+        barChart.rightAxis.enabled = false
     }
     
     @IBAction func buttonAction(_ sender: Any) {
@@ -109,10 +116,7 @@ extension HomePageViewController: WorkoutTrackingDelegate {
             self.barChart.notifyDataSetChanged()
             self.barChart.highlightPerTapEnabled = true
             self.barChart.doubleTapToZoomEnabled = false
-//            self.barChart.xAxis.labelPosition = .bottom
             self.barChart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
-            //            chartDataSet.drawValuesEnabled = false
-            //            chartData.notifyDataChanged()
 
         }
     }

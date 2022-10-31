@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0404A8ED290D680E0070DAF1 /* BodyScannerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0404A8EC290D680E0070DAF1 /* BodyScannerViewController.storyboard */; };
 		040D447C28ED895B0056A5A9 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040D447B28ED895B0056A5A9 /* HealthKit.framework */; };
 		04113421290629DD00A5D2A3 /* HealthKitManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433B58328ED76B900B821EF /* HealthKitManger.swift */; };
 		0433B58128ED768100B821EF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0433B58028ED768100B821EF /* HealthKit.framework */; };
@@ -36,7 +37,7 @@
 		04B7E46C28EAE6FA0019A4F3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7E46B28EAE6FA0019A4F3 /* NotificationController.swift */; };
 		04B7E46E28EAE6FA0019A4F3 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7E46D28EAE6FA0019A4F3 /* ComplicationController.swift */; };
 		04B7E47028EAE6FB0019A4F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B7E46F28EAE6FB0019A4F3 /* Assets.xcassets */; };
-		04FA98D728F1783000C117C2 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA98D628F1783000C117C2 /* InfoViewController.swift */; };
+		04FA98D728F1783000C117C2 /* BodyScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA98D628F1783000C117C2 /* BodyScannerViewController.swift */; };
 		04FA98DB28F188A700C117C2 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA98DA28F188A700C117C2 /* HomePageViewController.swift */; };
 		04FA98DE28F188C700C117C2 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA98DD28F188C700C117C2 /* HomePageViewModel.swift */; };
 		04FA98E128F194F400C117C2 /* ColorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA98E028F194F400C117C2 /* ColorCode.swift */; };
@@ -88,6 +89,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0404A8EC290D680E0070DAF1 /* BodyScannerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BodyScannerViewController.storyboard; sourceTree = "<group>"; };
 		040D447A28ED895B0056A5A9 /* WarmUpKitMobile WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WarmUpKitMobile WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		040D447B28ED895B0056A5A9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		0433B57E28ED768100B821EF /* WarmUpKitMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WarmUpKitMobile.entitlements; sourceTree = "<group>"; };
@@ -123,7 +125,7 @@
 		04B7E46F28EAE6FB0019A4F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04B7E47128EAE6FB0019A4F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04B7E47228EAE6FB0019A4F3 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		04FA98D628F1783000C117C2 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		04FA98D628F1783000C117C2 /* BodyScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyScannerViewController.swift; sourceTree = "<group>"; };
 		04FA98DA28F188A700C117C2 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		04FA98DD28F188C700C117C2 /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		04FA98E028F194F400C117C2 /* ColorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCode.swift; sourceTree = "<group>"; };
@@ -248,7 +250,7 @@
 				0440C99528F69946002E070A /* Component */,
 				04FA98DF28F194E600C117C2 /* Extensions */,
 				04FA98DC28F188B300C117C2 /* HomePage */,
-				04FA98D528F1781700C117C2 /* Info */,
+				04FA98D528F1781700C117C2 /* OpenCV */,
 				048E5DB328EFD89B00F9E1D8 /* HealthRecord */,
 				0433B57E28ED768100B821EF /* WarmUpKitMobile.entitlements */,
 				04B7E44328EAE6F70019A4F3 /* AppDelegate.swift */,
@@ -286,12 +288,13 @@
 			path = "WarmUpKitMobile WatchKit Extension";
 			sourceTree = "<group>";
 		};
-		04FA98D528F1781700C117C2 /* Info */ = {
+		04FA98D528F1781700C117C2 /* OpenCV */ = {
 			isa = PBXGroup;
 			children = (
-				04FA98D628F1783000C117C2 /* InfoViewController.swift */,
+				04FA98D628F1783000C117C2 /* BodyScannerViewController.swift */,
+				0404A8EC290D680E0070DAF1 /* BodyScannerViewController.storyboard */,
 			);
-			path = Info;
+			path = OpenCV;
 			sourceTree = "<group>";
 		};
 		04FA98DC28F188B300C117C2 /* HomePage */ = {
@@ -433,6 +436,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0404A8ED290D680E0070DAF1 /* BodyScannerViewController.storyboard in Resources */,
 				0457D53C28F424C5006D059A /* StepSummaryView.xib in Resources */,
 				04B7E45028EAE6F90019A4F3 /* LaunchScreen.storyboard in Resources */,
 				04B7E44D28EAE6F90019A4F3 /* Assets.xcassets in Resources */,
@@ -561,7 +565,7 @@
 				0440C9A028F6B425002E070A /* MainCardView.swift in Sources */,
 				04FA98DE28F188C700C117C2 /* HomePageViewModel.swift in Sources */,
 				04B7E44428EAE6F70019A4F3 /* AppDelegate.swift in Sources */,
-				04FA98D728F1783000C117C2 /* InfoViewController.swift in Sources */,
+				04FA98D728F1783000C117C2 /* BodyScannerViewController.swift in Sources */,
 				04FA98DB28F188A700C117C2 /* HomePageViewController.swift in Sources */,
 				048E5DB628EFD8B800F9E1D8 /* HealthRecordViewController.swift in Sources */,
 				04B7E44628EAE6F70019A4F3 /* SceneDelegate.swift in Sources */,

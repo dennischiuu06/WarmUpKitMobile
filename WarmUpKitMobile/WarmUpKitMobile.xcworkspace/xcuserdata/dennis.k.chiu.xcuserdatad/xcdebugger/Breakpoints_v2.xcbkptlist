@@ -7,80 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "313D9BAB-02D5-4AF5-9904-6995C51EE618"
+            uuid = "54517C55-DAF2-48C1-AE58-49AB632AB609"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/HealthKitManger.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "readStep()"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "getHealthKitStepsInfo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C95A1DD2-9B22-4C55-87ED-BBC6E376C72D"
+            uuid = "0CD20387-8653-4DC3-9BB3-673EB167C51B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WarmUpKitMobile/HomePage/HomePageViewController.swift"
+            filePath = "WarmUpKitMobile/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
-            landmarkName = "testingInfo()"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "customButtonAction(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8595850D-1659-4348-BF3E-56110ABA62E0"
+            uuid = "A223BCC6-083B-4F4F-BF49-7497B6ABFD9A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WarmUpKitMobile/HomePage/HomePageViewController.swift"
+            filePath = "WarmUpKitMobile/Info/BodyScannerViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
-            landmarkName = "testingInfo()"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "create()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B01D44E2-6AA4-445A-9011-4709B217DE0D"
+            uuid = "28032901-3501-4134-A13F-D7E8467BD626"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WarmUpKitMobile/HomePage/HomePageViewController.swift"
+            filePath = "WarmUpKitMobile/Extensions/UIViewController+Extensions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
-            landmarkName = "testingInfo()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A35E6EC8-25E9-441C-90C1-299A441A9B61"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WarmUpKitMobile/HomePage/HomePageViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
-            landmarkName = "testingInfo()"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "setupNavigationTitle(title:textColor:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
