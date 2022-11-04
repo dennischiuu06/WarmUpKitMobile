@@ -67,7 +67,7 @@ class HomePageViewController: UIViewController {
         summaryStackView.addArrangedSubview(secondSummaryBoard)
         
         // Bar Chart view
-        barChart.frame = CGRect(x: 0, y: 0, width: barChartView.bounds.width - 32 , height: barChartView.bounds.height - 32)
+        barChart.frame = CGRect(x: 0, y: 0, width: barChartView.bounds.width , height: barChartView.bounds.height)
         barChart.noDataText = "You need to provide data for the chart."
         barChartView.addSubview(barChart)
         
@@ -75,12 +75,42 @@ class HomePageViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        let xAxis = barChart.xAxis
-        xAxis.labelFont = UIFont(name: "Helvetica-LightOblique", size: 12) ?? .systemFont(ofSize: 12)
-        xAxis.labelTextColor = ColorCode.darkGrey()
-        xAxis.drawAxisLineEnabled = false
-        
         barChart.rightAxis.enabled = false
+
+        let xAxis = barChart.xAxis
+        xAxis.labelPosition = .bottom
+        xAxis.labelTextColor = ColorCode.darkGrey()
+        xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 8) ?? .systemFont(ofSize: 8)
+        xAxis.granularity = 1
+        xAxis.labelCount = 8
+        xAxis.drawAxisLineEnabled = true
+        xAxis.valueFormatter = DayAxisValueFormatter(chart: barChart)
+        
+        let leftAxis = barChart.leftAxis
+        leftAxis.labelFont = .systemFont(ofSize: 8)
+        leftAxis.labelCount = 8
+        leftAxis.labelPosition = .outsideChart
+        leftAxis.spaceTop = 0.4
+        leftAxis.axisMinimum = 0
+        
+        let l = barChart.legend
+        l.horizontalAlignment = .left
+        l.verticalAlignment = .bottom
+        l.orientation = .horizontal
+        l.drawInside = false
+        l.form = .circle
+        l.formSize = 9
+        l.font = UIFont(name: "HelveticaNeue-Light", size: 8)!
+        l.xEntrySpace = 4
+        
+        let marker = XYMarkerView(color: UIColor(white: 180/250, alpha: 1),
+                                  font: .systemFont(ofSize: 12),
+                                  textColor: .white,
+                                  insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8),
+                                  xAxisValueFormatter: barChart.xAxis.valueFormatter!)
+        marker.chartView = barChart
+        marker.minimumSize = CGSize(width: 80, height: 40)
+        barChart.marker = marker
     }
     
     @IBAction func buttonAction(_ sender: Any) {
@@ -106,13 +136,18 @@ extension HomePageViewController: WorkoutTrackingDelegate {
                 let barEntry = BarChartDataEntry(x: (Double(x)), y: data)
                 dataEntries.append(barEntry)
             }
-            
+
             let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Steps")
             chartDataSet.colors = ChartColorTemplates.colorful()
             chartDataSet.notifyDataSetChanged()
             let chartData = BarChartData(dataSet: chartDataSet)
-            chartData.barWidth = 0.5
-            self.barChart.data = chartData
+            chartData.barWidth = 0.6
+
+            if let _ = stepsData.first(where: { $0 != 0 }) {
+                self.barChart.data = chartData
+            } else {
+                self.barChart.data = nil
+            }
             self.barChart.notifyDataSetChanged()
             self.barChart.highlightPerTapEnabled = true
             self.barChart.doubleTapToZoomEnabled = false
@@ -126,4 +161,26 @@ extension HomePageViewController: WorkoutTrackingDelegate {
             self.secondSummaryBoard.importData(iconKey: "energy_icon", title: "Active Energy", firstTitle: "Active Energy", firstContent: String(energy), secondTitle: "Average Kilocalories", secondContent: String(format: "%.2f", energy))
         }
     }
+}
+
+public class XYMarkerView: BalloonMarker {
+    public var xAxisValueFormatter: AxisValueFormatter
+    fileprivate var yFormatter = NumberFormatter()
+    
+    public init(color: UIColor, font: UIFont, textColor: UIColor, insets: UIEdgeInsets,
+                xAxisValueFormatter: AxisValueFormatter) {
+        self.xAxisValueFormatter = xAxisValueFormatter
+        yFormatter.minimumFractionDigits = 1
+        yFormatter.maximumFractionDigits = 1
+        super.init(color: color, font: font, textColor: textColor, insets: insets)
+    }
+    
+    public override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
+        let string = "Date: "
+            + xAxisValueFormatter.stringForValue(entry.x, axis: XAxis())
+            + ", Value: "
+            + yFormatter.string(from: NSNumber(floatLiteral: entry.y))!
+        setLabel(string)
+    }
+    
 }

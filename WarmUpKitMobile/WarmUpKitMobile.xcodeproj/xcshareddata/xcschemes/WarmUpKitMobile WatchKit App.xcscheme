@@ -55,10 +55,8 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       notificationPayloadFile = "WarmUpKitMobile WatchKit Extension/PushNotificationPayload.apns">
-      <RemoteRunnable
-         runnableDebuggingMode = "2"
-         BundleIdentifier = "com.apple.Carousel"
-         RemotePath = "/WarmUpKitMobile WatchKit App">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04B7E45328EAE6F90019A4F3"
@@ -66,7 +64,7 @@
             BlueprintName = "WarmUpKitMobile WatchKit App"
             ReferencedContainer = "container:WarmUpKitMobile.xcodeproj">
          </BuildableReference>
-      </RemoteRunnable>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -74,10 +72,8 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <RemoteRunnable
-         runnableDebuggingMode = "2"
-         BundleIdentifier = "com.apple.Carousel"
-         RemotePath = "/WarmUpKitMobile WatchKit App">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04B7E45328EAE6F90019A4F3"
@@ -85,16 +81,7 @@
             BlueprintName = "WarmUpKitMobile WatchKit App"
             ReferencedContainer = "container:WarmUpKitMobile.xcodeproj">
          </BuildableReference>
-      </RemoteRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "04B7E45328EAE6F90019A4F3"
-            BuildableName = "WarmUpKitMobile WatchKit App.app"
-            BlueprintName = "WarmUpKitMobile WatchKit App"
-            ReferencedContainer = "container:WarmUpKitMobile.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

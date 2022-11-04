@@ -17,10 +17,9 @@ private class CubicLineSampleFillFormatter: FillFormatter {
 
 class HealthRecordViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
-//    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var contentView: UIView!
 
-    @IBOutlet weak var chartView: PieChartView!
+    @IBOutlet weak var halfChartView: PieChartView!
     @IBOutlet weak var cubicChartView: LineChartView!
     @IBOutlet weak var heartRateView: UIView!
 
@@ -31,6 +30,7 @@ class HealthRecordViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var lowestRateImageView: UIImageView!
     @IBOutlet weak var lowestRateTitle: UILabel!
     @IBOutlet weak var lowestRateSubTitle: UILabel!
+    @IBOutlet weak var heartRateListButton: UIButton!
 
     var healthStore = HKHealthStore()
     
@@ -40,12 +40,14 @@ class HealthRecordViewController: UIViewController, ChartViewDelegate {
     
     let healthKitManager = HealthKitManager.shared
     
-    var viewModel: HealthRecordViewModel?
+    var viewModel = HealthRecordViewModel()
+    
+    var totalRate: [Int] = []
     
     class func create(viewModel: HealthRecordViewModel? = nil) -> HealthRecordViewController? {
         let storyboard = UIStoryboard(name: "HealthRecord", bundle: nil)
         guard let viewController = storyboard.instantiateViewController(withIdentifier: "HealthRecord") as? HealthRecordViewController else { return nil }
-        viewController.viewModel = viewModel
+//        viewController.viewModel = viewModel
         return viewController
     }
     
@@ -55,23 +57,30 @@ class HealthRecordViewController: UIViewController, ChartViewDelegate {
             self.retrieveHeartRateData()
         }
         setupUI()
+        setupHalfChartView()
         setUpHeartRateInfoBoard()
+        setupCubicChartView()
     }
     
     func setupUI() {
+        setupNavigationTitle(title: "Health Record Details Page")
         self.view.backgroundColor = ColorCode.backgroundGrey()
-        chartView.backgroundColor = .white
+        halfChartView.backgroundColor = .white
         heartRateView.backgroundColor = .white
-        chartView.setShadow(color: ColorCode.lightState(), opacity: 1, radius: 4, offset: 4)
+        halfChartView.setShadow(color: ColorCode.lightState(), opacity: 1, radius: 4, offset: 4)
         heartRateView.setShadow(color: ColorCode.lightState(), opacity: 1, radius: 4, offset: 4)
 
         scrollView.backgroundColor = ColorCode.backgroundGrey()
         contentView.backgroundColor = ColorCode.backgroundGrey()
         scrollView.frame = view.bounds
         scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        heartRateListButton.addTarget(self, action: #selector(heartRateListAction(_:)), for: .touchUpInside)
 
-        setupNavigationTitle(title: "Health Record Details Page")
-        self.setupHalfChartView()
+    }
+    
+    @objc private func heartRateListAction(_ sender: Any?) {
+        
     }
     
     func setUpHeartRateInfoBoard() {
@@ -84,7 +93,7 @@ class HealthRecordViewController: UIViewController, ChartViewDelegate {
         
         highestRateSubTitle.font = UIFont(name: "Helvetica-Bold", size: 18)
         highestRateSubTitle.textColor = ColorCode.darkGrey()
-        highestRateSubTitle.text = "120 BPM"
+        highestRateSubTitle.text = "\(viewModel.highestRate)BPM"
 
         lowestRateTitle.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
         lowestRateTitle.textColor = ColorCode.grey()
@@ -92,24 +101,24 @@ class HealthRecordViewController: UIViewController, ChartViewDelegate {
         
         lowestRateSubTitle.font = UIFont(name: "Helvetica-Bold", size: 18)
         lowestRateSubTitle.textColor = ColorCode.darkGrey()
-        lowestRateSubTitle.text = "80 BPM"
+        lowestRateSubTitle.text = "\(viewModel.lowestRate)BPM"
     }
     
     func setupHalfChartView() {
         self.baseChartViewSetUp()
-        chartView.delegate = self
-        chartView.holeColor = .white
-        chartView.transparentCircleColor = NSUIColor.white.withAlphaComponent(0.48)
-        chartView.holeRadiusPercent = 0.55
-        chartView.rotationEnabled = false
-        chartView.highlightPerTapEnabled = true
+        halfChartView.delegate = self
+        halfChartView.holeColor = .white
+        halfChartView.transparentCircleColor = NSUIColor.white.withAlphaComponent(0.48)
+        halfChartView.holeRadiusPercent = 0.55
+        halfChartView.rotationEnabled = false
+        halfChartView.highlightPerTapEnabled = true
         
-        chartView.maxAngle = 180 // Half chart
-        chartView.rotationAngle = 180 // Rotate to make the half on the upper side
-        chartView.centerTextOffset = CGPoint(x: 0, y: -20)
+        halfChartView.maxAngle = 180 // Half chart
+        halfChartView.rotationAngle = 180 // Rotate to make the half on the upper side
+        halfChartView.centerTextOffset = CGPoint(x: 0, y: -20)
         
         
-        let l = chartView.legend
+        let l = halfChartView.legend
         l.horizontalAlignment = .center
         l.verticalAlignment = .top
         l.orientation = .horizontal
@@ -119,24 +128,23 @@ class HealthRecordViewController: UIViewController, ChartViewDelegate {
         l.yOffset = 0
 
         // entry label styling
-        chartView.entryLabelColor = .white
-        chartView.entryLabelFont = UIFont(name: "Helvetica-Bold", size: 12)
+        halfChartView.entryLabelColor = .white
+        halfChartView.entryLabelFont = UIFont(name: "Helvetica-Bold", size: 12)
         
         self.setDataCount(3, range: 100)
         
-        chartView.animate(xAxisDuration: 1.4, easingOption: .easeOutBack)
+        halfChartView.animate(xAxisDuration: 1.4, easingOption: .easeOutBack)
         
-        setupCubicChartView()
     }
     
     func baseChartViewSetUp() {
-        chartView.usePercentValuesEnabled = true
-        chartView.drawSlicesUnderHoleEnabled = false
-        chartView.transparentCircleRadiusPercent = 0.61
-        chartView.chartDescription.enabled = false
-        chartView.setExtraOffsets(left: 5, top: 10, right: 5, bottom: 5)
+        halfChartView.usePercentValuesEnabled = true
+        halfChartView.drawSlicesUnderHoleEnabled = false
+        halfChartView.transparentCircleRadiusPercent = 0.61
+        halfChartView.chartDescription.enabled = false
+        halfChartView.setExtraOffsets(left: 5, top: 10, right: 5, bottom: 5)
         
-        chartView.drawCenterTextEnabled = true
+        halfChartView.drawCenterTextEnabled = true
         
         let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.lineBreakMode = .byTruncatingTail
@@ -145,9 +153,9 @@ class HealthRecordViewController: UIViewController, ChartViewDelegate {
         let centerText = NSMutableAttributedString(string: "Health Info Item")
         centerText.setAttributes([.font: UIFont(name: "Helvetica-LightOblique", size: 14)!,
                                   .paragraphStyle : paragraphStyle], range: NSRange(location: 0, length: centerText.length))
-        chartView.centerAttributedText = centerText;
+        halfChartView.centerAttributedText = centerText;
         
-        chartView.drawHoleEnabled = true
+        halfChartView.drawHoleEnabled = true
     }
     
     let parties = ["Party A", "Party B", "Party C", "Party D", "Party E", "Party F",
@@ -178,16 +186,33 @@ class HealthRecordViewController: UIViewController, ChartViewDelegate {
         data.setValueFont(UIFont(name: "Helvetica-Bold", size: 11) ?? UIFont.systemFont(ofSize: 12))
         data.setValueTextColor(.white)
         
-        chartView.data = data
+        halfChartView.data = data
         
-        chartView.setNeedsDisplay()
+        halfChartView.setNeedsDisplay()
+    }
+    
+    func updateHeartRateInfo() {
+        for data in datasource as [HKQuantitySample] {
+            let value = data.quantity.doubleValue(for: HKUnit(from: "count/min"))
+
+            let intValue = Int(value)
+//            let heartRateString = String(format: "%.00f", value)
+            totalRate.append(intValue)
+        }
+        print(totalRate.count)
+        print(totalRate)
+        
+        if let maxRate = totalRate.max(), let minRate = totalRate.min() {
+            highestRateSubTitle.text = "\(maxRate)BPM"
+            lowestRateSubTitle.text = "\(minRate)BPM"
+        }
     }
 }
 
 extension HealthRecordViewController {
     func setupCubicChartView() {
         cubicChartView.delegate = self
-
+        
         cubicChartView.setViewPortOffsets(left: 35, top: 35, right: 20, bottom: 0)
         cubicChartView.backgroundColor = .white
         
@@ -197,7 +222,7 @@ extension HealthRecordViewController {
         cubicChartView.maxHighlightDistance = 300
         cubicChartView.pinchZoomEnabled = true
         cubicChartView.doubleTapToZoomEnabled = false
-
+        
         let l = cubicChartView.legend
         l.form = .line
         l.font = UIFont(name: "HelveticaNeue-Light", size: 11)!
@@ -210,6 +235,9 @@ extension HealthRecordViewController {
         let xAxis = cubicChartView.xAxis
         xAxis.labelFont = UIFont(name: "Helvetica-LightOblique", size: 12) ?? .systemFont(ofSize: 12)
         xAxis.labelTextColor = ColorCode.darkGrey()
+        xAxis.axisMinLabels = 4
+        xAxis.axisMinimum = 0
+        xAxis.labelCount = 0
         xAxis.drawAxisLineEnabled = false
         
         let leftAxis = cubicChartView.leftAxis
@@ -221,20 +249,31 @@ extension HealthRecordViewController {
         leftAxis.axisLineColor = ColorCode.darkGrey()
         
         cubicChartView.rightAxis.enabled = false
-
-        setCubicChartDataCount(31, range: 100)
+        
+        setCubicChartDataCount()
         
         cubicChartView.animate(xAxisDuration: 2.5)
     }
     
-    func setCubicChartDataCount(_ count: Int, range: UInt32) {
-        let yVals1 = (0..<count).map { (i) -> ChartDataEntry in
-            let mult = range + 1
-            let val = Double(arc4random_uniform(mult) + 40)
-            return ChartDataEntry(x: Double(i), y: val)
+    func setCubicChartDataCount() {
+        let yVals1 = datasource.enumerated().map { (index, data) -> ChartDataEntry in
+            let value = data.quantity.doubleValue(for: HKUnit(from: "count/min"))
+            
+            let rate = Double(value)
+            return ChartDataEntry(x: Double(index), y: rate)
         }
-
-        let set1 = LineChartDataSet(entries: yVals1, label: "DataSet 1")
+        
+        //        let yVals1 = (0..<count).map { (i) -> ChartDataEntry in
+        //
+        //            let mult = range + 1
+        //            print("Printmult", mult)
+        //            let val = Double(arc4random_uniform(mult) + 40)
+        //            print("PrintX", i)
+        //            print("PrintY->", val)
+        //            return ChartDataEntry(x: Double(i), y: val)
+        //        }
+        
+        let set1 = LineChartDataSet(entries: yVals1, label: "Heart Rate")
         set1.setColor(UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1))
         set1.mode = .cubicBezier
         set1.drawCirclesEnabled = true
@@ -253,10 +292,43 @@ extension HealthRecordViewController {
         data.setValueFont(UIFont(name: "HelveticaNeue-Light", size: 9)!)
         data.setDrawValues(false)
         
-        cubicChartView.data = data
-
+        if totalRate.isEmpty {
+            cubicChartView.data = nil
+        } else {
+            cubicChartView.data = data
+        }
+        
+    }
+    
+    @objc func heartRateListAction() {
+        
     }
 }
+
+//extension HealthRecordViewController: HeartRateDelegate {
+//
+//    func heartRateUpdated(heartRateSamples: [HKSample]) {
+//        guard let heartRateSamples = heartRateSamples as? [HKQuantitySample] else {
+//            return
+//        }
+//
+//        DispatchQueue.main.async {
+//            print("DennisSync")
+//            self.viewModel?.setDataSource(heartRate: heartRateSamples)
+//            self.updateHeartRateInfo()
+////            viewModel.datasource.append(contentsOf: heartRateSamples)
+////            self.tableView.reloadData()
+//        }
+//    }
+//
+//    func retrieveHeartRateData() {
+//        if let query = healthKitManager.createHeartRateStreamingQuery(Date()) {
+//            self.heartRateQuery = query
+//            self.healthKitManager.heartRateDelegate = self
+//            self.healthKitManager.healthStore.execute(query)
+//        }
+//    }
+//}
 
 //extension HealthRecordViewController: UITableViewDataSource,UITableViewDelegate {
 //
@@ -294,6 +366,8 @@ extension HealthRecordViewController: HeartRateDelegate {
 
         DispatchQueue.main.async {
             self.datasource.append(contentsOf: heartRateSamples)
+            self.updateHeartRateInfo()
+            self.setCubicChartDataCount()
 //            self.tableView.reloadData()
         }
     }

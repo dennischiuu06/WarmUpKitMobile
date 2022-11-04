@@ -34,6 +34,38 @@
             endingLineNumber = "62"
             landmarkName = "customButtonAction(sender:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0CD20387-8653-4DC3-9BB3-673EB167C51B - cc83fd5aed791b72"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WarmUpKitMobile.TabBarPageViewController.customButtonAction(sender: __C.UIButton) -&gt; ()"
+                  moduleName = "WarmUpKitMobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dennis.k.chiu/WarmUpKitMobile/WarmUpKitMobile/WarmUpKitMobile/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "113">
+               </Location>
+               <Location
+                  uuid = "0CD20387-8653-4DC3-9BB3-673EB167C51B - cc83fd5aed791b72"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WarmUpKitMobile.TabBarPageViewController.customButtonAction(sender: __C.UIButton) -&gt; ()"
+                  moduleName = "WarmUpKitMobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dennis.k.chiu/WarmUpKitMobile/WarmUpKitMobile/WarmUpKitMobile/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "148">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -55,16 +87,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "28032901-3501-4134-A13F-D7E8467BD626"
+            uuid = "04D77304-FF6D-4485-8B69-EC4B506DC49F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WarmUpKitMobile/Extensions/UIViewController+Extensions.swift"
+            filePath = "WarmUpKitMobile/HomePage/HomePageViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "setupNavigationTitle(title:textColor:)"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "didReceiveHealthKitStepCounts(stepCounts:avgSteps:stepsData:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -88,24 +88,20 @@ class HealthKitManager: NSObject {
 
             var totalSteps = 0.0
 
-            for x in 1...dayInt {
+            for _ in 1...dayInt {
                 let nextDay: Date = calendar.date(byAdding: .day, value: 1, to: thisDay)!
                 // Plot the weekly step counts over the past 3 months
                 statsCollection.enumerateStatistics(from: thisDay, to: thisDay) { statistics, stop in
                     if let quantity = statistics.sumQuantity() {
                         let _ = statistics.startDate
                         let value = quantity.doubleValue(for: HKUnit.count())
-                        print("Dennis", value)
-                        print("Dennis2", Double(x))
-                        dataArray.append(value)
-//                        let barEntry = BarChartDataEntry(x: (Double(x)), y: value)
-//                        dataEntries.append(barEntry)
-
-//                        let barEntry = BarChartDataEntry(x: (Double(i)), y: value)
-//                        dataEntries.append(barEntry)
-                        totalSteps += value
-                        // Call a custom method to plot each data point.String(describing: )
                         
+                        dataArray.append(value)
+                        totalSteps += value
+                    } else {
+                        let defaultData = Double(0)
+                    
+                        dataArray.append(defaultData)
                     }
                 }
                 thisDay = nextDay
@@ -117,14 +113,11 @@ class HealthKitManager: NSObject {
         
         healthStore.execute(query)
 
-        
-//        DispatchQueue.main.async {
-//            self.summaryBoard.importData(iconKey: "walk_icon", title: "Steps", firstTitle: "Steps", firstContent: String(totalSteps), secondTitle: "Average Steps", secondContent: String(totalSteps / Double(dayInt)))
-//        }
     }
     
     func getActiveEnergy() {
         let healthKitStore = HKHealthStore()
+        var energy = 0.0
         if let energyType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned) {
             
             let startOfMonth = getStartDay()
@@ -135,44 +128,15 @@ class HealthKitManager: NSObject {
             let updateHandler = HKStatisticsQuery(quantityType: energyType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (query, sample, error) -> Void in
                 
                 if let sample = sample {
-                    let energy = sample.sumQuantity()?.doubleValue(for: HKUnit.kilocalorie()) ?? 0.0
-                    self.delegate?.didReceiveHealthKitEnergy(energy)
+                    energy = sample.sumQuantity()?.doubleValue(for: HKUnit.kilocalorie()) ?? 0.0
                 }
             }
+            
+            self.delegate?.didReceiveHealthKitEnergy(energy)
+
             healthKitStore.execute(updateHandler)
         }
     }
-//    func readEnergy() -> (kcal: String, energy: String) {
-//        var kcal = ""
-//        var energy = ""
-//        guard let energyType = HKSampleType.quantityType(forIdentifier: .activeEnergyBurned) else {
-//            print("Sample type not available")
-//            return ("", "")
-//        }
-//
-//        let now = Date()
-//        let startOfDay = Calendar.current.startOfDay(for: now)
-//        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
-//
-//        let energyQuery = HKSampleQuery(sampleType: energyType,predicate: predicate,limit: HKObjectQueryNoLimit,sortDescriptors: nil) {(query, sample, error) in
-//            guard error == nil,let quantitySamples = sample as? [HKQuantitySample] else {
-//                print("Something went wrong: \(error)")
-//                return
-//            }
-//
-//            let total = quantitySamples.reduce(0.0) { $0 + $1.quantity.doubleValue(for: HKUnit.kilocalorie()) }
-//            print("Total kcal: \(total)")
-//            kcal = "\(total)"
-//
-//            DispatchQueue.main.async {
-//                energy = String(format: "Energy: %.2f", total)
-//            }
-//
-//        }
-//        HKHealthStore().execute(energyQuery)
-//
-//        return (kcal, energy)
-//    }
     
     func createHeartRateStreamingQuery(_ workoutStartDate: Date) -> HKQuery? {
         guard let heartRateType: HKQuantityType = HKQuantityType.quantityType(forIdentifier: .heartRate) else {

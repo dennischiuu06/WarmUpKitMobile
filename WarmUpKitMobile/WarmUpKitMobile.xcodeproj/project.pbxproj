@@ -10,8 +10,12 @@
 		0404A8ED290D680E0070DAF1 /* BodyScannerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0404A8EC290D680E0070DAF1 /* BodyScannerViewController.storyboard */; };
 		040D447C28ED895B0056A5A9 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040D447B28ED895B0056A5A9 /* HealthKit.framework */; };
 		04113421290629DD00A5D2A3 /* HealthKitManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433B58328ED76B900B821EF /* HealthKitManger.swift */; };
+		0411D1782914C43A0002006A /* HealthRateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0411D1772914C43A0002006A /* HealthRateListViewController.swift */; };
+		0411D1792914C4490002006A /* HealthRateListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048E5DB828EFD9D400F9E1D8 /* HealthRateListViewController.storyboard */; };
 		0433B58128ED768100B821EF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0433B58028ED768100B821EF /* HealthKit.framework */; };
 		0433B58428ED76B900B821EF /* HealthKitManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433B58328ED76B900B821EF /* HealthKitManger.swift */; };
+		043EE7AA291154B400E3847A /* DayAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043EE7A9291154B400E3847A /* DayAxisValueFormatter.swift */; };
+		043EE7AC291165C700E3847A /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043EE7AB291165C700E3847A /* BalloonMarker.swift */; };
 		0440C99728F6A9FF002E070A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440C99628F6A9FF002E070A /* UIViewController+Extensions.swift */; };
 		0440C99928F6AF33002E070A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440C99828F6AF33002E070A /* NavigationController.swift */; };
 		0440C99B28F6AFB5002E070A /* NavigationBarStyleChangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440C99A28F6AFB5002E070A /* NavigationBarStyleChangeable.swift */; };
@@ -92,9 +96,12 @@
 		0404A8EC290D680E0070DAF1 /* BodyScannerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BodyScannerViewController.storyboard; sourceTree = "<group>"; };
 		040D447A28ED895B0056A5A9 /* WarmUpKitMobile WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WarmUpKitMobile WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		040D447B28ED895B0056A5A9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		0411D1772914C43A0002006A /* HealthRateListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRateListViewController.swift; sourceTree = "<group>"; };
 		0433B57E28ED768100B821EF /* WarmUpKitMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WarmUpKitMobile.entitlements; sourceTree = "<group>"; };
 		0433B58028ED768100B821EF /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		0433B58328ED76B900B821EF /* HealthKitManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManger.swift; sourceTree = "<group>"; };
+		043EE7A9291154B400E3847A /* DayAxisValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayAxisValueFormatter.swift; sourceTree = "<group>"; };
+		043EE7AB291165C700E3847A /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		0440C99628F6A9FF002E070A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		0440C99828F6AF33002E070A /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		0440C99A28F6AFB5002E070A /* NavigationBarStyleChangeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarStyleChangeable.swift; sourceTree = "<group>"; };
@@ -104,7 +111,7 @@
 		0457D53928F424C4006D059A /* StepSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSummaryView.swift; sourceTree = "<group>"; };
 		0457D53A28F424C4006D059A /* StepSummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepSummaryView.xib; sourceTree = "<group>"; };
 		048E5DB428EFD8B800F9E1D8 /* HealthRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRecordViewController.swift; sourceTree = "<group>"; };
-		048E5DB828EFD9D400F9E1D8 /* HealthRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HealthRecord.storyboard; sourceTree = "<group>"; };
+		048E5DB828EFD9D400F9E1D8 /* HealthRateListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HealthRateListViewController.storyboard; sourceTree = "<group>"; };
 		048E5DBA28EFDCF900F9E1D8 /* HealthRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRecordViewModel.swift; sourceTree = "<group>"; };
 		04B7E44028EAE6F70019A4F3 /* WarmUpKitMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WarmUpKitMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B7E44328EAE6F70019A4F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -190,14 +197,24 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		043EE7A82911549600E3847A /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				043EE7A9291154B400E3847A /* DayAxisValueFormatter.swift */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
 		0440C99528F69946002E070A /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				043EE7A82911549600E3847A /* Formatters */,
 				0440C99C28F6B329002E070A /* NavigationBarStyle */,
 				0457D53928F424C4006D059A /* StepSummaryView.swift */,
 				0457D53A28F424C4006D059A /* StepSummaryView.xib */,
 				0440C99F28F6B425002E070A /* MainCardView.swift */,
 				0440C99D28F6B3CB002E070A /* MainCardView.xib */,
+				043EE7AB291165C700E3847A /* BalloonMarker.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -216,7 +233,8 @@
 			children = (
 				048E5DB428EFD8B800F9E1D8 /* HealthRecordViewController.swift */,
 				048E5DBA28EFDCF900F9E1D8 /* HealthRecordViewModel.swift */,
-				048E5DB828EFD9D400F9E1D8 /* HealthRecord.storyboard */,
+				048E5DB828EFD9D400F9E1D8 /* HealthRateListViewController.storyboard */,
+				0411D1772914C43A0002006A /* HealthRateListViewController.swift */,
 			);
 			path = HealthRecord;
 			sourceTree = "<group>";
@@ -441,6 +459,7 @@
 				04B7E45028EAE6F90019A4F3 /* LaunchScreen.storyboard in Resources */,
 				04B7E44D28EAE6F90019A4F3 /* Assets.xcassets in Resources */,
 				04B7E44B28EAE6F70019A4F3 /* Main.storyboard in Resources */,
+				0411D1792914C4490002006A /* HealthRateListViewController.storyboard in Resources */,
 				0440C99E28F6B3CB002E070A /* MainCardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,7 +575,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0433B58428ED76B900B821EF /* HealthKitManger.swift in Sources */,
+				043EE7AA291154B400E3847A /* DayAxisValueFormatter.swift in Sources */,
 				04B7E44828EAE6F70019A4F3 /* ViewController.swift in Sources */,
+				043EE7AC291165C700E3847A /* BalloonMarker.swift in Sources */,
 				0440C99728F6A9FF002E070A /* UIViewController+Extensions.swift in Sources */,
 				0457D53B28F424C5006D059A /* StepSummaryView.swift in Sources */,
 				0457D53828F420E1006D059A /* UIView+Extensions.swift in Sources */,
@@ -567,6 +588,7 @@
 				04B7E44428EAE6F70019A4F3 /* AppDelegate.swift in Sources */,
 				04FA98D728F1783000C117C2 /* BodyScannerViewController.swift in Sources */,
 				04FA98DB28F188A700C117C2 /* HomePageViewController.swift in Sources */,
+				0411D1782914C43A0002006A /* HealthRateListViewController.swift in Sources */,
 				048E5DB628EFD8B800F9E1D8 /* HealthRecordViewController.swift in Sources */,
 				04B7E44628EAE6F70019A4F3 /* SceneDelegate.swift in Sources */,
 				04FA98E128F194F400C117C2 /* ColorCode.swift in Sources */,

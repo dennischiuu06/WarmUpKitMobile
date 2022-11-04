@@ -6,7 +6,12 @@
 //
 
 import Foundation
+import HealthKit
 
 struct HealthRecordViewModel {
-    
+    var datasource: [HKQuantitySample] = []
+
+    var highestRate = "-"
+    var lowestRate = "-"
+
 }
