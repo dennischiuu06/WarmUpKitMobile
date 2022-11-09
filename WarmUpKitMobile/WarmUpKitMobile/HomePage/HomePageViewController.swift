@@ -45,7 +45,11 @@ class HomePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         healthKitManager.authorizeHealthKitAccess { (success, error) in
-            self.healthKitManager.getActiveEnergy()
+            if success {
+                self.healthKitManager.getActiveEnergy()
+            } else if let error = error {
+                print(error)
+            }
         }
         
         healthKitManager.getActiveEnergy()
@@ -113,28 +117,22 @@ class HomePageViewController: UIViewController {
         barChart.marker = marker
     }
     
-    @IBAction func buttonAction(_ sender: Any) {
-        guard let viewController = HealthRecordViewController.create() else { return }
-        viewController.modalPresentationStyle = .fullScreen
-        if let nc = self.navigationController {
-            nc.pushViewController(viewController, animated: true)
-        } else {
-            self.present(viewController, animated: true) {}
-        }
-    }
 }
 
 extension HomePageViewController: WorkoutTrackingDelegate {
     func didReceiveHealthKitStepCounts(stepCounts: Double, avgSteps: Double, stepsData: [Double]) {
         DispatchQueue.main.async {
-            self.summaryBoard.importData(iconKey: "walk_icon", title: "Steps", firstTitle: "Steps", firstContent: String(stepCounts), secondTitle: "Average Steps", secondContent: String(format: "%.2f", avgSteps))
+            self.summaryBoard.importData(iconKey: "iconstep", title: "Steps", firstTitle: "Steps", firstContent: String(stepCounts), secondTitle: "Average Steps", secondContent: String(format: "%.2f", avgSteps))
             
             var dataEntries = [BarChartDataEntry]()
             
             for (index, data) in stepsData.enumerated() {
                 let x = index + 1
-                let barEntry = BarChartDataEntry(x: (Double(x)), y: data)
-                dataEntries.append(barEntry)
+                let doubleStr = String(format: "%.2f", data)
+                if let value = Double(doubleStr) {
+                    let barEntry = BarChartDataEntry(x: (Double(x)), y: value)
+                    dataEntries.append(barEntry)
+                }
             }
 
             let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Steps")
@@ -158,7 +156,7 @@ extension HomePageViewController: WorkoutTrackingDelegate {
     
     func didReceiveHealthKitEnergy(_ energy: Double) {
         DispatchQueue.main.async {
-            self.secondSummaryBoard.importData(iconKey: "energy_icon", title: "Active Energy", firstTitle: "Active Energy", firstContent: String(energy), secondTitle: "Average Kilocalories", secondContent: String(format: "%.2f", energy))
+            self.secondSummaryBoard.importData(iconKey: "iconactive_oval", title: "Active Energy", firstTitle: "Active Energy", firstContent: String(energy), secondTitle: "Average Kilocalories", secondContent: String(format: "%.2f", energy))
         }
     }
 }

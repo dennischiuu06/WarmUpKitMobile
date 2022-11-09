@@ -116,6 +116,7 @@ class InterfaceController: WKInterfaceController {
         let workout = HKWorkout(activityType: .other,
                                 start: startDate,
                                 end: Date())
+        
         healthKitManager.healthStore.save(workout) { [weak self] (success, error) in
             if !success {
                 print("Could not successfully save workout.")

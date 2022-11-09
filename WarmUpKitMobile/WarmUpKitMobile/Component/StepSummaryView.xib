@@ -32,7 +32,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUx-eu-voK">
-                                    <rect key="frame" x="54" y="16" width="7" height="34"/>
+                                    <rect key="frame" x="62" y="16" width="7" height="34"/>
                                     <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="qUx-eu-voK" firstAttribute="top" secondItem="74K-ur-IfF" secondAttribute="top" constant="16" id="6HR-ZB-Oxd"/>
-                                <constraint firstItem="qUx-eu-voK" firstAttribute="leading" secondItem="5Wb-3L-65C" secondAttribute="trailing" constant="8" id="LmC-hj-BIt"/>
+                                <constraint firstItem="qUx-eu-voK" firstAttribute="leading" secondItem="5Wb-3L-65C" secondAttribute="trailing" constant="16" id="LmC-hj-BIt"/>
                                 <constraint firstItem="5Wb-3L-65C" firstAttribute="centerY" secondItem="qUx-eu-voK" secondAttribute="centerY" id="Pa8-rC-yC5"/>
                                 <constraint firstAttribute="height" constant="50" id="Rib-Cb-OMq"/>
                                 <constraint firstAttribute="bottom" secondItem="qUx-eu-voK" secondAttribute="bottom" id="gNo-LA-O99"/>

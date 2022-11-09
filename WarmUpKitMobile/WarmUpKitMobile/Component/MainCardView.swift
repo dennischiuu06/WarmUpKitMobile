@@ -42,10 +42,10 @@ class MainCardView: UIView {
         stackView.backgroundColor = ColorCode.backgroundGrey()
         stackView.spacing = 8
         dateTimeLabel.textColor = ColorCode.grey()
-        dateTimeLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        dateTimeLabel.font = UIFont.boldSystemFont(ofSize: 16)
         dateTimeLabel.text = viewModel.latestDateTime.uppercased()
         
-        greetingLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        greetingLabel.font = UIFont.boldSystemFont(ofSize: 20)
         greetingLabel.text = viewModel.greetingMsg
         
     }

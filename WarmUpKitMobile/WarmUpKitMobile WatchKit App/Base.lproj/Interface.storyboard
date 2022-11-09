@@ -11,7 +11,11 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WarmUpKitMobile_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="okay done" id="oXK-VY-2pw"/>
+                        <group width="1" alignment="left" id="0xL-yW-Ddk">
+                            <items>
+                                <label alignment="left" text="Warm Up KIt" textAlignment="center" baselineAdjustment="alignCenters" id="oXK-VY-2pw"/>
+                            </items>
+                        </group>
                         <button width="1" alignment="left" verticalAlignment="bottom" title="Start measuring" id="dYa-st-nVP">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -32,10 +36,11 @@
                         </group>
                         <group width="1" alignment="left" id="avg-pA-SlP">
                             <items>
-                                <label alignment="left" text="Label" id="tLh-zU-UA6">
+                                <label alignment="left" text="N/A" id="tLh-zU-UA6">
                                     <fontDescription key="font" type="system" pointSize="11"/>
                                 </label>
                             </items>
+                            <edgeInsets key="margins" left="8" right="0.0" top="0.0" bottom="0.0"/>
                         </group>
                     </items>
                     <connections>

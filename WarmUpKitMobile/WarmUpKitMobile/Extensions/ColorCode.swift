@@ -60,4 +60,21 @@ extension ColorCode {
     static func linkRed(alpha: CGFloat = 1) -> UIColor {
         return UIColor(red: value(244), green: value(117), blue: value(117), alpha: alpha)
     }
+    
+    static func darkRedBackground(alpha: CGFloat = 1) -> UIColor {
+        return UIColor(red: value(206), green: value(81), blue: value(87), alpha: alpha)
+    }
+    
+    public static func lightBlue(alpha: CGFloat = 1) -> UIColor {
+        return UIColor(red: value(206), green: value(232), blue: value(240), alpha: alpha)
+    }
+    /// #387E79 Primary colour: Medium Jade 1000 (Medium Jade)
+    public static func mediumJade1000(alpha: CGFloat = 1) -> UIColor {
+        return UIColor(red: value(56), green: value(126), blue: value(121), alpha: alpha)
+    }
+    
+    /// #5F9793 Primary colour: Medium Jade 800 (Medium Jade +20)
+    public static func mediumJade800(alpha: CGFloat = 1) -> UIColor {
+        return UIColor(red: value(95), green: value(151), blue: value(147), alpha: alpha)
+    }
 }
