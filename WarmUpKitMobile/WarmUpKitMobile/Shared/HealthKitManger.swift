@@ -13,7 +13,7 @@ protocol HeartRateDelegate {
 }
 
 protocol WorkoutTrackingDelegate {
-    func didReceiveHealthKitEnergy(_ energy: Double)
+    func didReceiveHealthKitEnergy(_ energy: Double, _ avgEnergy: Double)
     func didReceiveHealthKitStepCounts(stepCounts: Double, avgSteps: Double, stepsData: [Double])
 }
 
@@ -116,6 +116,10 @@ class HealthKitManager: NSObject {
     }
     
     func getActiveEnergy() {
+        let startOfMonth = getStartDay()
+        let endOfMonth = getEndDay(startOfMonth: startOfMonth)
+        let dayInt = getDayInt(endOfMonth: endOfMonth)
+        
         let healthKitStore = HKHealthStore()
         var energy = 0.0
         if let energyType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned) {
@@ -129,12 +133,55 @@ class HealthKitManager: NSObject {
                 
                 if let sample = sample {
                     energy = sample.sumQuantity()?.doubleValue(for: HKUnit.kilocalorie()) ?? 0.0
+                    let avgEnergy = Double(dayInt)
+                    self.delegate?.didReceiveHealthKitEnergy(energy, avgEnergy)
+
                 }
             }
             
-            self.delegate?.didReceiveHealthKitEnergy(energy)
 
             healthKitStore.execute(updateHandler)
+        }
+    }
+    
+    func getTodaysHeartRates() {
+       //predicate
+        let healthKitStore = HKHealthStore()
+
+       let calendar = NSCalendar.current
+       let now = NSDate()
+       let components = calendar.dateComponents([.year, .month, .day], from: now as Date)
+       
+        guard let startDate:NSDate = calendar.date(from: components) as NSDate? else { return }
+        var dayComponent    = DateComponents()
+        dayComponent.day    = 1
+        let endDate:NSDate? = calendar.date(byAdding: dayComponent, to: startDate as Date) as NSDate?
+        let predicate = HKQuery.predicateForSamples(withStart: startDate as Date, end: endDate as Date?, options: [])
+        
+        //descriptor
+        let sortDescriptors = [
+                               NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
+                             ]
+        if let heartRateType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate) {
+            
+            let heartRateQuery = HKSampleQuery(sampleType: heartRateType, predicate: predicate, limit: 25, sortDescriptors: sortDescriptors, resultsHandler: { (query, results, error) in
+                guard error == nil else {
+                    print("error")
+                    return
+                }
+                print(results)
+                
+                guard let heartRateSamples = results as? [HKQuantitySample] else {
+                    return
+                }
+                print(heartRateSamples)
+                var datasourcett: [HKQuantitySample] = []
+
+                datasourcett.append(contentsOf: heartRateSamples)
+                print(datasourcett)
+                
+            }) //eo-query
+            healthKitStore.execute(heartRateQuery)
         }
     }
     

@@ -60,6 +60,8 @@ class HealthRecordViewController: UIViewController, ChartViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("viewDidAppear")
+        healthKitManager.getTodaysHeartRates()
+
         healthKitManager.authorizeHealthKitAccess { (success, error) in
             if success {
                 self.retrieveHeartRateData()

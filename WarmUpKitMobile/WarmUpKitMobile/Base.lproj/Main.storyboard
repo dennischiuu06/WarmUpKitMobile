@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qAU-ny-TM6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qAU-ny-TM6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sA-xK-0BU">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9jQ-Z9-n05">
                                         <rect key="frame" x="0.0" y="16" width="414" height="896"/>
@@ -151,7 +152,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JkT-R5-Tkf">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -170,7 +171,7 @@
                     <tabBarItem key="tabBarItem" title="Health Record" image="list.dash" catalog="system" id="Rwy-9O-jeg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yFM-us-xlz">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -191,12 +192,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W66-92-LHD">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbD-gK-BeL">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="751"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ss-OT-ShM" customClass="PieChartView" customModule="Charts">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dur-m8-HA8" userLabel="booking hotel">
+                                                <rect key="frame" x="0.0" y="16" width="414" height="75"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_fitness_device" translatesAutoresizingMaskIntoConstraints="NO" id="EXl-8Q-9bs">
+                                                        <rect key="frame" x="16" y="9" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="LLB-j0-JtD"/>
+                                                            <constraint firstAttribute="width" constant="20" id="eC6-t0-oMm"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You may find some datys withouts data. Please kindly keep waring your watch and check back each day to see your trends build" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFX-gp-5jB">
+                                                        <rect key="frame" x="44" y="0.0" width="354" height="75"/>
+                                                        <color key="backgroundColor" red="0.99215686270000003" green="0.96470588239999999" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="75" id="1Xx-AQ-p6t"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.99215686270000003" green="0.96470588239999999" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="EXl-8Q-9bs" firstAttribute="leading" secondItem="dur-m8-HA8" secondAttribute="leading" constant="16" id="5kd-b5-a8e"/>
+                                                    <constraint firstItem="nFX-gp-5jB" firstAttribute="leading" secondItem="EXl-8Q-9bs" secondAttribute="trailing" constant="8" id="HcB-AW-82v"/>
+                                                    <constraint firstItem="EXl-8Q-9bs" firstAttribute="top" secondItem="dur-m8-HA8" secondAttribute="top" constant="9" id="aAP-ya-cDX"/>
+                                                    <constraint firstAttribute="bottom" secondItem="nFX-gp-5jB" secondAttribute="bottom" id="aAc-zh-j3V"/>
+                                                    <constraint firstAttribute="trailing" secondItem="nFX-gp-5jB" secondAttribute="trailing" constant="16" id="esw-Tb-ccf"/>
+                                                    <constraint firstItem="nFX-gp-5jB" firstAttribute="top" secondItem="dur-m8-HA8" secondAttribute="top" id="t3p-1K-ytJ"/>
+                                                </constraints>
+                                            </view>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ss-OT-ShM" customClass="PieChartView" customModule="Charts">
                                                 <rect key="frame" x="16" y="16" width="382" height="220"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -204,7 +236,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTb-Ls-R11">
-                                                <rect key="frame" x="16" y="252" width="382" height="612"/>
+                                                <rect key="frame" x="16" y="107" width="382" height="612"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wrt-Dl-vWI">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
@@ -375,12 +407,15 @@
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="eTb-Ls-R11" firstAttribute="leading" secondItem="hbD-gK-BeL" secondAttribute="leading" constant="16" id="IfN-nZ-2zI"/>
-                                            <constraint firstItem="eTb-Ls-R11" firstAttribute="top" secondItem="2Ss-OT-ShM" secondAttribute="bottom" constant="16" id="ODh-pp-Vmp"/>
+                                            <constraint firstAttribute="trailing" secondItem="dur-m8-HA8" secondAttribute="trailing" id="OCA-ny-QqJ"/>
                                             <constraint firstAttribute="trailing" secondItem="2Ss-OT-ShM" secondAttribute="trailing" constant="16" id="P00-Yt-fZm"/>
+                                            <constraint firstItem="dur-m8-HA8" firstAttribute="top" secondItem="hbD-gK-BeL" secondAttribute="top" constant="16" id="T7q-Fw-FSH"/>
                                             <constraint firstAttribute="bottom" secondItem="eTb-Ls-R11" secondAttribute="bottom" constant="32" id="UHX-xA-Kgr"/>
                                             <constraint firstItem="2Ss-OT-ShM" firstAttribute="top" secondItem="hbD-gK-BeL" secondAttribute="top" constant="16" id="bSU-Mo-bEN"/>
+                                            <constraint firstItem="eTb-Ls-R11" firstAttribute="top" secondItem="dur-m8-HA8" secondAttribute="bottom" constant="16" id="iSu-fb-c36"/>
                                             <constraint firstItem="2Ss-OT-ShM" firstAttribute="leading" secondItem="hbD-gK-BeL" secondAttribute="leading" constant="16" id="n37-aW-3hb"/>
                                             <constraint firstAttribute="trailing" secondItem="eTb-Ls-R11" secondAttribute="trailing" constant="16" id="pMH-8u-csn"/>
+                                            <constraint firstItem="dur-m8-HA8" firstAttribute="leading" secondItem="hbD-gK-BeL" secondAttribute="leading" id="uOF-mZ-QoG"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -429,6 +464,7 @@
     <resources>
         <image name="iconArrowLeftSecondary" width="24" height="24"/>
         <image name="iconArrowRightSecondary" width="24" height="24"/>
+        <image name="icon_fitness_device" width="24" height="24"/>
         <image name="icon_health_profile" width="240" height="180"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="rightArrowBtn" width="16" height="16"/>

@@ -154,9 +154,9 @@ extension HomePageViewController: WorkoutTrackingDelegate {
         }
     }
     
-    func didReceiveHealthKitEnergy(_ energy: Double) {
+    func didReceiveHealthKitEnergy(_ energy: Double, _ avgEnergy: Double) {
         DispatchQueue.main.async {
-            self.secondSummaryBoard.importData(iconKey: "iconactive_oval", title: "Active Energy", firstTitle: "Active Energy", firstContent: String(energy), secondTitle: "Average Kilocalories", secondContent: String(format: "%.2f", energy))
+            self.secondSummaryBoard.importData(iconKey: "iconactive_oval", title: "Active Energy", firstTitle: "Active Energy", firstContent: String(energy), secondTitle: "Average Kilocalories", secondContent: String(format: "%.2f", avgEnergy))
         }
     }
 }
