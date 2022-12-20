@@ -1,0 +1,7 @@
+WarmUpKitMobile/build
+
+## Other
+*.moved-aside
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
