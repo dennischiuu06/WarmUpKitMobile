@@ -1,6 +1,0 @@
-framework module Pods_WarmUpKitMobile {
-  umbrella header "Pods-WarmUpKitMobile-umbrella.h"
-
-  export *
-  module * { export * }
-}
